@@ -29,7 +29,7 @@ namespace Negocio
                     comando.CommandType = System.Data.CommandType.Text;
                     comando.CommandText = "insert into ARTICULOS (Nombre, Codigo, Descripcion, IdCategoria, IdMarca, ImagenUrl, Precio) Values (@Nombre,@Codigo,@Descripcion,@IdCategoria,@IdMarca,@ImagenUrl,@Precio)";
                     comando.Parameters.AddWithValue("@Nombre", nuevo.Nombre);
-                    comando.Parameters.AddWithValue("@Codigo", nuevo.Codigo);
+                    
                     comando.Parameters.AddWithValue("@Descripcion", nuevo.Descripcion);
                     comando.Parameters.AddWithValue("@IdCategoria", nuevo.Categoria.Id.ToString());
                     comando.Parameters.AddWithValue("@Precio", nuevo.Precio);
@@ -74,7 +74,7 @@ namespace Negocio
             try
             {
                 datos.setearQuery("Update ARTICULOS set Codigo=@Codigo,Nombre=@Nombre, Descripcion=@Descripcion, ImagenURL=@ImagenURL, Precio=@Precio, IdMarca=@IdMarca, IdCategoria = @IdCategoria where Id=@Id");
-                datos.agregarParametro("@Codigo", articulo.Codigo);
+                
                 datos.agregarParametro("@Nombre", articulo.Nombre);
                 datos.agregarParametro("@Id", articulo.Id);
                 datos.agregarParametro("IdCategoria", articulo.Categoria.Id);
@@ -100,15 +100,15 @@ namespace Negocio
                 while (datos.lector.Read())
                 {
                     aux = new Articulo();
-                    aux.Categoria = new Categoria();
-                    aux.sub = new SubCategoria();
-
-                    aux.Id = datos.lector.GetInt32(0);
+                    
+                    aux.Id = datos.lector.GetInt64(0);
                     aux.Nombre = datos.lector.GetString(1);
-                    aux.Descripcion = datos.lector.GetString(3);
+                    aux.Descripcion = datos.lector.GetString(2);
+                    aux.Categoria = new Categoria();
                     aux.Categoria.Nombre = (string)datos.lector["DescCat"];
-                    aux.Categoria.Id = datos.lector.GetInt32(4);
-                    aux.sub.Nombre = (string)datos.lector["DescCat"];
+                    aux.Categoria.Id = datos.lector.GetInt64(4);
+                    aux.sub = new SubCategoria();
+                    aux.sub.Nombre = (string)datos.lector["NombreCat"];
                     aux.sub.Id = datos.lector.GetInt32(6);
                     aux.ImagenUrl = datos.lector.GetString(7);
                     aux.Precio = Decimal.Round((decimal)datos.lector["Precio"], 2);

@@ -22,3 +22,9 @@ C:\Users\cacer\Desktop\Pedro\TP3_Caceres-Pedro\Dominio\obj\Debug\Dominio.csprojA
 C:\Users\cacer\Desktop\Pedro\TP3_Caceres-Pedro\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\cacer\Desktop\Pedro\TP3_Caceres-Pedro\Dominio\obj\Debug\Dominio.dll
 C:\Users\cacer\Desktop\Pedro\TP3_Caceres-Pedro\Dominio\obj\Debug\Dominio.pdb
+C:\Users\cacer\source\repos\TPC-Caceres\Dominio\bin\Debug\Dominio.dll
+C:\Users\cacer\source\repos\TPC-Caceres\Dominio\bin\Debug\Dominio.pdb
+C:\Users\cacer\source\repos\TPC-Caceres\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\cacer\source\repos\TPC-Caceres\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\cacer\source\repos\TPC-Caceres\Dominio\obj\Debug\Dominio.dll
+C:\Users\cacer\source\repos\TPC-Caceres\Dominio\obj\Debug\Dominio.pdb
