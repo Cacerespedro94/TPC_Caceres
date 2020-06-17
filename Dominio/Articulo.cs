@@ -10,6 +10,17 @@ namespace Dominio
 {
    public class Articulo
     {
+       public Articulo()
+        {
+            Id = 0;
+            Nombre = "";
+            Descripcion = "";
+            Categoria = new Categoria();
+            sub = new SubCategoria();
+            ImagenUrl = "";
+            Precio = 0;
+            CantidadUnidades = 0;
+        }
         public  Int64 Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }

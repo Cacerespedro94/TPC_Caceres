@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 namespace Dominio
 {
    public class SubCategoria
-    {
+    {       
+            public SubCategoria()
+        {
+            Id = 0;
+            Nombre = "";
+        }
             public int Id { get; set; }
             public string Nombre { get; set; }
             public override string ToString()

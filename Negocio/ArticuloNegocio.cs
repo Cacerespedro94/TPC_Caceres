@@ -19,35 +19,33 @@ namespace Negocio
 
         public void Agregar(Articulo nuevo)
         {
-         
 
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
+
+            AccesoDatos datos = new AccesoDatos();
             try
             {
-                    conexion.ConnectionString = "data source= DESKTOP-PJFNJ5R\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
-                    comando.CommandType = System.Data.CommandType.Text;
-                    comando.CommandText = "insert into ARTICULOS (Nombre, Codigo, Descripcion, IdCategoria, IdMarca, ImagenUrl, Precio) Values (@Nombre,@Codigo,@Descripcion,@IdCategoria,@IdMarca,@ImagenUrl,@Precio)";
-                    comando.Parameters.AddWithValue("@Nombre", nuevo.Nombre);
-                    
-                    comando.Parameters.AddWithValue("@Descripcion", nuevo.Descripcion);
-                    comando.Parameters.AddWithValue("@IdCategoria", nuevo.Categoria.Id.ToString());
-                    comando.Parameters.AddWithValue("@Precio", nuevo.Precio);
-                    comando.Parameters.AddWithValue("@ImagenUrl", nuevo.ImagenUrl);
+                    datos.setearSP("spAgregar");
 
-                comando.Connection = conexion;
-                conexion.Open();
-                comando.ExecuteNonQuery();
-                }
+                    datos.agregarParametro("@Nombre", nuevo.Nombre);
+                    datos.agregarParametro("@Descripcion", nuevo.Descripcion);
+                    datos.agregarParametro("@IdCategoria", nuevo.Categoria.Id.ToString());
+                    datos.agregarParametro("@IdSubCategoria", nuevo.sub.Id.ToString());
+                    datos.agregarParametro("@Precio", nuevo.Precio);
+                    datos.agregarParametro("@ImagenUrl", nuevo.ImagenUrl);
+                    
+                    datos.ejecutarAccion();
+
+
+
+
+
+            }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-            finally
-            {
-                conexion.Close();
-            }
+       
         }
 
         public void eliminar(int id)
@@ -101,7 +99,7 @@ namespace Negocio
                 {
                     aux = new Articulo();
                     
-                    aux.Id = datos.lector.GetInt64(0);
+                    aux.Id = datos.lector.GetInt32(0);
                     aux.Nombre = datos.lector.GetString(1);
                     aux.Descripcion = datos.lector.GetString(2);
                     aux.Categoria = new Categoria();
@@ -131,4 +129,5 @@ namespace Negocio
         }
         
     }
+
 }
