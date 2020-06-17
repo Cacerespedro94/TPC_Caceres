@@ -15,7 +15,7 @@
       <input type="email" class="form-control" id="inputEmail4">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
+      <label for="inputPassword4">Contraseña</label>
       <input type="password" class="form-control" id="inputPassword4">
     </div>
   </div>
