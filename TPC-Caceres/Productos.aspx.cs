@@ -4,15 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Dominio;
 using Negocio;
+using Dominio;
+
 
 namespace TPC_Caceres
 {
     public partial class Productos : System.Web.UI.Page
     {
+        
         public List <Articulo> listaProductos { get; set; }
-        public Carrito prue = new Carrito();
+        public Carro prue = new Carro();
         List<Articulo> listaArticulo;
         Articulo ar = new Articulo();
         ArticuloNegocio negocio = new ArticuloNegocio();
@@ -55,6 +57,39 @@ namespace TPC_Caceres
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        protected void btnargumento_Click(object sender, EventArgs e)
+        {
+            CarritoNegocio carrito = new CarritoNegocio();
+            Articulo articulo = new Articulo();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                var articuloSeleccionado = Convert.ToInt32(((Button)sender).CommandArgument);
+                ar = listaArticulo.Find(J => J.Id == articuloSeleccionado);
+
+                if (Session[Session.SessionID + "elemento"] != null)
+                {
+                    prue = (Carro)Session[Session.SessionID + "elemento"];
+                }
+                if (!prue.Item.Exists(A => A.Id == ar.Id))
+                {
+
+                    prue.Item.Add(ar);
+                    prue.SubTotal += ar.Precio;
+                    prue.Cantidad++;
+                    Session.Add(Session.SessionID + "elemento", prue);
+                }
+                {
+
+                }
+                Response.Redirect("Productos.aspx");
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

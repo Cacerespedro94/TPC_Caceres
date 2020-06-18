@@ -36,9 +36,6 @@ namespace Negocio
                     datos.ejecutarAccion();
 
 
-
-
-
             }
             catch (Exception ex)
             {
@@ -53,7 +50,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearQuery("delete from Articulos where id =" + id);
+                datos.setearQuery("Update Producto Set Eliminado = 1 where ID = " + id );
                 datos.ejecutarAccion();
                 
             }
@@ -71,7 +68,7 @@ namespace Negocio
 
             try
             {
-                datos.setearQuery("Update ARTICULOS set Codigo=@Codigo,Nombre=@Nombre, Descripcion=@Descripcion, ImagenURL=@ImagenURL, Precio=@Precio, IdMarca=@IdMarca, IdCategoria = @IdCategoria where Id=@Id");
+                datos.setearQuery("Update ARTICULOS set Codigo=@Codigo,Nombre=@Nombre, Descripcion=@Descripcion, ImagenURL=@ImagenURL, Precio=@Precio, IdCategoria = @IdCategoria where Id=@Id");
                 
                 datos.agregarParametro("@Nombre", articulo.Nombre);
                 datos.agregarParametro("@Id", articulo.Id);
@@ -93,7 +90,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearQuery("select a.id, a.Nombre, a.Descripcion, C.Nombre as DescCat, C.Id as IdCat, S.Nombre as NombreCat,S.Id as IdSub, a.ImagenUrl, a.Precio from Producto as A inner join Categoria as C on C.Id = a.IdCategoria inner join SubCategoria as S on S.Id = a.IdSubCategoria");
+                datos.setearQuery("select a.id, a.Nombre, a.Descripcion, C.Nombre as DescCat, C.Id as IdCat, S.Nombre as NombreCat,S.Id as IdSub, a.ImagenUrl, a.Precio, a.Eliminado from Producto as A inner join Categoria as C on C.Id = a.IdCategoria inner join SubCategoria as S on S.Id = a.IdSubCategoria where a.Eliminado != 1");
                 datos.ejecutarLector();
                 while (datos.lector.Read())
                 {
@@ -110,7 +107,8 @@ namespace Negocio
                     aux.sub.Id = datos.lector.GetInt32(6);
                     aux.ImagenUrl = datos.lector.GetString(7);
                     aux.Precio = Decimal.Round((decimal)datos.lector["Precio"], 2);
-                    
+                    aux.Eliminado = datos.lector.GetBoolean(9);
+
                     listadoArticulo.Add(aux);
                 }    
 

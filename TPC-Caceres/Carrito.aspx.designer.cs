@@ -15,12 +15,30 @@ namespace TPC_Caceres
     {
 
         /// <summary>
-        /// Control dgvPrueba.
+        /// Control dgvCarrito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvPrueba;
+        protected global::System.Web.UI.WebControls.GridView dgvCarrito;
+
+        /// <summary>
+        /// Control CanUni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CanUni;
+
+        /// <summary>
+        /// Control Total.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Total;
     }
 }

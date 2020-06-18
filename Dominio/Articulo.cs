@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-   public class Articulo
+    public class Articulo
     {
-       public Articulo()
+        public Articulo()
         {
             Id = 0;
             Nombre = "";
@@ -20,16 +20,18 @@ namespace Dominio
             ImagenUrl = "";
             Precio = 0;
             CantidadUnidades = 0;
+            Eliminado = false;
         }
-        public  Int64 Id { get; set; }
+        public Int64 Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public Categoria Categoria { get; set; }
         public SubCategoria sub { get; set; }
         public string ImagenUrl { get; set; }
         public decimal Precio { get; set; }
-        public int CantidadUnidades { get; set; }
-
-
+        public int CantidadUnidades { get; set; } 
+        public bool Eliminado { get; set; }
     }
+
 }
+

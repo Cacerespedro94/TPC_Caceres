@@ -1,5 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Productos.aspx.cs" Inherits="TPC_Caceres.Productos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        body{
+            margin-top: 70px;
+
+        }
+    </style>
+    
+    
     <div class=" card-columns mt-5" style="margin-left: 10px; margin-right: 10px;">
         <asp:Repeater runat="server" ID="repetidor">
             <ItemTemplate>
@@ -11,9 +19,9 @@
                         <h4 class="card-text text-center font-weight-bold  text-danger">$<%#Eval("Precio")%></h4>
                     </div>
                     <div class="row">
-                        <%--<div class="col text-center">
-                            <asp:Button ID="btnargumento" CssClass="btn btn-success border border-primary rounded-pill mb-3 float-none " Text="Agregar al carrito" CommandArgument='<%#Eval("Id")%>' CommandName="idproducto" runat="server" OnClick="btnargumento_click" />
-                        </div>--%>
+                        <div class="col text-center">
+                            <asp:Button ID="btnargumento" CssClass="btn btn-success border border-primary rounded-pill mb-3 float-none " Text="Agregar al carrito" CommandArgument='<%#Eval("Id")%>' CommandName="idproducto" runat="server" OnClick="btnargumento_Click"/>
+                        </div>
                     </div>
                 </div>
             </ItemTemplate>

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Dominio
 {
 
-    public class Carrito
+    public class Carro
     {
-        public Carrito()
+        public Carro()
         {
             Item = new List<Articulo>();
             Cantidad = 0;
@@ -17,7 +17,6 @@ namespace Dominio
            
         }
         public int Id { get; set; }
-        public Cliente Cliente { get; set; } 
         public List<Articulo> Item { get; set; }
         public int Cantidad { get; set; }
         public decimal SubTotal { get; set; }
