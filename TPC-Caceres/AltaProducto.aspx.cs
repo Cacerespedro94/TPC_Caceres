@@ -12,9 +12,11 @@ namespace TPC_Caceres
     public partial class AltaProducto : System.Web.UI.Page
     {
         Articulo nuevo = new Articulo();
+        ArticuloNegocio negocio = new ArticuloNegocio();
+        
         protected void Page_Load(object sender, EventArgs e)
-        {
-
+        {   
+           
         }
 
         protected void Agregar_Click(object sender, EventArgs e)
@@ -26,7 +28,7 @@ namespace TPC_Caceres
             nuevo.sub.Id = Convert.ToInt32(SubBox.Text);
             nuevo.Precio = Convert.ToDecimal(PrecioBox.Text);
             nuevo.ImagenUrl = ImagenBox.Text;
-
+           
             negocio.Agregar(nuevo);
 
             

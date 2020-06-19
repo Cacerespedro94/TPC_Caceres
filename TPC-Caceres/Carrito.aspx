@@ -23,7 +23,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-sm-9 ">
-                <asp:GridView CssClass="table bg-light" ID="dgvCarrito" runat="server" AutoGenerateColumns="false">
+                <asp:GridView CssClass="table bg-light" ID="dgvCarrito" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvCarrito_SelectedIndexChanged" OnRowCommand="dgvCarrito_RowCommand">
                     <Columns>
                         <asp:BoundField HeaderText="Id" DataField="Id" ItemStyle-CssClass="oculto" HeaderStyle-CssClass="oculto" />
                         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />

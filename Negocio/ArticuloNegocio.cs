@@ -8,15 +8,10 @@ using Dominio;
 using System.Data.SqlClient;
 
 
-
-
 namespace Negocio
 {
     public class ArticuloNegocio
     {
-       
-        
-
         public void Agregar(Articulo nuevo)
         {
 
@@ -24,16 +19,16 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                    datos.setearSP("spAgregar");
+                datos.setearSP("spAgregar");
 
-                    datos.agregarParametro("@Nombre", nuevo.Nombre);
-                    datos.agregarParametro("@Descripcion", nuevo.Descripcion);
-                    datos.agregarParametro("@IdCategoria", nuevo.Categoria.Id.ToString());
-                    datos.agregarParametro("@IdSubCategoria", nuevo.sub.Id.ToString());
-                    datos.agregarParametro("@Precio", nuevo.Precio);
-                    datos.agregarParametro("@ImagenUrl", nuevo.ImagenUrl);
-                    
-                    datos.ejecutarAccion();
+                datos.agregarParametro("@Nombre", nuevo.Nombre);
+                datos.agregarParametro("@Descripcion", nuevo.Descripcion);
+                datos.agregarParametro("@IdCategoria", nuevo.Categoria.Id.ToString());
+                datos.agregarParametro("@IdSubCategoria", nuevo.sub.Id.ToString());
+                datos.agregarParametro("@Precio", nuevo.Precio);
+                datos.agregarParametro("@ImagenUrl", nuevo.ImagenUrl);
+
+                datos.ejecutarAccion();
 
 
             }
@@ -42,7 +37,7 @@ namespace Negocio
 
                 throw ex;
             }
-       
+
         }
 
         public void eliminar(int id)
@@ -50,36 +45,40 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearQuery("Update Producto Set Eliminado = 1 where ID = " + id );
+                datos.setearSP("spEliminar");
+                datos.agregarParametro("@ID", id);
                 datos.ejecutarAccion();
-                
+
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-
         }
 
-        public void modificar(Articulo articulo)
+        public void modificar(Articulo nuevo)
         {
+           
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-                datos.setearQuery("Update ARTICULOS set Codigo=@Codigo,Nombre=@Nombre, Descripcion=@Descripcion, ImagenURL=@ImagenURL, Precio=@Precio, IdCategoria = @IdCategoria where Id=@Id");
-                
-                datos.agregarParametro("@Nombre", articulo.Nombre);
-                datos.agregarParametro("@Id", articulo.Id);
-                datos.agregarParametro("IdCategoria", articulo.Categoria.Id);
-                datos.agregarParametro("@Descripcion", articulo.Descripcion);
-                datos.agregarParametro("@ImagenURL", articulo.ImagenUrl);
-                datos.agregarParametro("@Precio", articulo.Precio);
+                datos.setearSP("spModificar");
+
+                datos.agregarParametro("@ID", nuevo.Id);
+                datos.agregarParametro("@Nombre", nuevo.Nombre);
+                datos.agregarParametro("@Descripcion", nuevo.Descripcion);
+                datos.agregarParametro("@IdCategoria", nuevo.Categoria.Id.ToString());
+                datos.agregarParametro("@IdSubCategoria", nuevo.sub.Id.ToString());
+                datos.agregarParametro("@Precio", nuevo.Precio);
+                datos.agregarParametro("@ImagenUrl", nuevo.ImagenUrl);
+
                 datos.ejecutarAccion();
+
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
         }
@@ -95,7 +94,7 @@ namespace Negocio
                 while (datos.lector.Read())
                 {
                     aux = new Articulo();
-                    
+
                     aux.Id = datos.lector.GetInt32(0);
                     aux.Nombre = datos.lector.GetString(1);
                     aux.Descripcion = datos.lector.GetString(2);
@@ -110,7 +109,7 @@ namespace Negocio
                     aux.Eliminado = datos.lector.GetBoolean(9);
 
                     listadoArticulo.Add(aux);
-                }    
+                }
 
                 return listadoArticulo;
             }
@@ -123,9 +122,9 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-          
+
         }
-        
+
     }
 
 }

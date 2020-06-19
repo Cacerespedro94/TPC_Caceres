@@ -131,6 +131,7 @@
     <Content Include="Carrito.aspx" />
     <Content Include="InicioAdmin.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="ModificarAdmin.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="ProductosAdmin.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -235,6 +236,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarAdmin.aspx.cs">
+      <DependentUpon>ModificarAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarAdmin.aspx.designer.cs">
+      <DependentUpon>ModificarAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>

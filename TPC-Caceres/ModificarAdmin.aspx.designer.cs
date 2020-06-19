@@ -11,7 +11,7 @@ namespace TPC_Caceres
 {
 
 
-    public partial class AltaProducto
+    public partial class ModificarAdmin
     {
 
         /// <summary>
@@ -42,15 +42,6 @@ namespace TPC_Caceres
         protected global::System.Web.UI.WebControls.TextBox CategoriaBox;
 
         /// <summary>
-        /// Control cboCategoria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboCategoria;
-
-        /// <summary>
         /// Control SubBox.
         /// </summary>
         /// <remarks>
@@ -76,5 +67,14 @@ namespace TPC_Caceres
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ImagenBox;
+
+        /// <summary>
+        /// Control btnModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModificar;
     }
 }

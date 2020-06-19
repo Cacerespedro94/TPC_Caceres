@@ -21,6 +21,7 @@ namespace TPC_Caceres
 
             try
             {
+
                 if (Session[Session.SessionID + "elemento"] != null)
                 {
                     prue = (Carro)Session[Session.SessionID + "elemento"];
@@ -43,15 +44,7 @@ namespace TPC_Caceres
                     }
                 }
 
-                //listaProductos = negocio.ListarArticulos();
-
-                //listaArticulo = negocio.ListarArticulos();
-
-                //dgvCarrito.DataSource = listaProductos;
-                //dgvCarrito.DataBind();
-                //dgvCarrito.RowStyle.CssClass = "font-weight-bold";
-                //dgvCarrito.HeaderStyle.CssClass = "bg-primary";
-
+        
             }
 
 
@@ -61,6 +54,25 @@ namespace TPC_Caceres
                 throw;
             }
 
+        }
+
+        protected void dgvCarrito_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void dgvCarrito_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                int idProducto = Convert.ToInt32(dgvCarrito.Rows[index].Cells[0].Text);
+                ar = prue.Item.Find(J => J.Id == idProducto);
+                prue.SubTotal -= ar.Precio;
+                prue.Cantidad--;
+                prue.Item.Remove(ar);
+                Response.Redirect("Carrito.aspx");
+            }
         }
     }
 }
