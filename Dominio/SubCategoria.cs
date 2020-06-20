@@ -12,10 +12,12 @@ namespace Dominio
         {
             Id = 0;
             Nombre = "";
+            Eliminado = false;
         }
             public int Id { get; set; }
             public string Nombre { get; set; }
-            public override string ToString()
+            public bool Eliminado { get; set; }
+        public override string ToString()
             {
                 return Nombre;
             }

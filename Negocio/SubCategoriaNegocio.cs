@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Negocio;
 using Dominio;
-using System.Data.SqlClient;
-namespace Negocio
 
+namespace Negocio
 {
-    public class CategoriaNegocio
+    class SubCategoriaNegocio
     {
-        public void Agregar(Categoria nuevo)
+
+        public void Agregar(SubCategoria nuevo)
         {
 
 
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearSP("spAgregarCategoria");
+                datos.setearSP("spAgregarSubCategoria");
 
                 datos.agregarParametro("@Nombre", nuevo.Nombre);
 
@@ -38,7 +39,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearSP("spEliminarCategoria");
+                datos.setearSP("spEliminarSubCategoria");
                 datos.agregarParametro("@ID", id);
                 datos.ejecutarAccion();
 
@@ -50,13 +51,13 @@ namespace Negocio
             }
         }
 
-        public void Modificar(Categoria nuevo)
+        public void Modificar(SubCategoria nuevo)
         {
 
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearSP("spModificarCategoria");
+                datos.setearSP("spModificarSubCategoria");
 
                 datos.agregarParametro("@ID", nuevo.Id);
                 datos.agregarParametro("@Nombre", nuevo.Nombre);
@@ -70,28 +71,28 @@ namespace Negocio
                 throw ex;
             }
         }
-        public List<Categoria> ListarCategoria()
+        public List<SubCategoria> ListarSubCategoria()
         {
-            List<Categoria> listadoCategoria = new List<Categoria>();
-            Categoria aux;
+            List<SubCategoria> listadoSubCategoria = new List<SubCategoria>();
+            SubCategoria aux;
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearSP("spListarCategoria");
+                datos.setearSP("spListarSubCategoria");
                 datos.ejecutarLector();
                 while (datos.lector.Read())
                 {
-                    aux = new Categoria();
+                    aux = new SubCategoria();
 
                     aux.Id = datos.lector.GetInt32(0);
                     aux.Nombre = datos.lector.GetString(1);
-                 
+
                     aux.Eliminado = datos.lector.GetBoolean(3);
 
-                    listadoCategoria.Add(aux);
+                    listadoSubCategoria.Add(aux);
                 }
 
-                return listadoCategoria;
+                return listadoSubCategoria;
             }
             catch (Exception ex)
             {
