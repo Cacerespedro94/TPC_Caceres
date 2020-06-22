@@ -50,7 +50,7 @@ namespace TPC_Caceres
                 contactoNegocio.Agregar(contact);
 
                 IdContacto = contactoNegocio.BuscarIdContacto(contact);
-
+                
                 cliente.Dni = Convert.ToInt64(DniBox.Text);
                 cliente.Nombre = NombreBox.Text;
                 cliente.Apellido = ApellidoBox.Text;
@@ -58,7 +58,7 @@ namespace TPC_Caceres
                 cliente.User.Password = ContraseñaBox.Text;
                 cliente.direccion.Id = IdDireccion;
                 cliente.contacto.Id = IdContacto;
-
+                
 
                 clientenegocio.Agregar(cliente);
 

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMasterAdmin.Master" AutoEventWireup="true" CodeBehind="ProductosAdmin.aspx.cs" Inherits="TPC_Caceres.ProductosAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   <a href="AltaProducto.aspx" class="btn btn-success mb-3 float-right ">Agregar Producto &raquo;</a>
+   <a href="AltaProducto.aspx" class="btn btn-success mb-3 float-right ">Nuevo Producto &raquo;</a>
     <asp:GridView CssClass="table" ID="dgvProductosAdmin" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvProductosAdmin_SelectedIndexChanged" OnRowCommand="dgvProductosAdmin_RowCommand">
        
  
