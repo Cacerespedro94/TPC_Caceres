@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-   public class Persona
-    {   
+  public  class Proveedor
+    {
         public int Id { get; set; }
-        public Int64 Dni { get; set; }
         public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public Usuario User { get; set; }
-
+        public Contacto contacto { get; set; }
+        public Direccion direccion { get; set; }
     }
 }

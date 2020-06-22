@@ -20,6 +20,7 @@ namespace Dominio
             ImagenUrl = "";
             Precio = 0;
             CantidadUnidades = 0;
+            Stock = 0;
             Eliminado = false;
         }
         public Int64 Id { get; set; }
@@ -31,6 +32,7 @@ namespace Dominio
         public decimal Precio { get; set; }
         public int CantidadUnidades { get; set; } 
         public bool Eliminado { get; set; }
+        public int Stock { get; set; }
     }
 
 }

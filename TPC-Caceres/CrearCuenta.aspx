@@ -1,54 +1,100 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CrearCuenta.aspx.cs" Inherits="TPC_Caceres.CrearCuenta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        .contenedor{
-            margin-top:150px;
-            background-color:#d3d3d3;
-        }
-    </style>
     
-    <div class="container contenedor">
-    <form>
+    <div>
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Contraseña</label>
-      <input type="password" class="form-control" id="inputPassword4">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-  </div>
-  <div class="form-group">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Nombre</label>
+        <asp:TextBox ID="NombreBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
 
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>
+          <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Apellido</label>
+        <asp:TextBox ID="ApellidoBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
+          <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">DNI</label>
+        <asp:TextBox ID="DniBox" CssClass="form-control" runat="server" /> 
+            
+          
+     </div>  
+      </div>
+                <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Nombre de Usuario</label>
+        <asp:TextBox ID="NombreUsuarioBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
+          <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Contraseña</label>
+        <asp:TextBox ID="ContraseñaBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
+          <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Calle</label>
+        <asp:TextBox ID="CalleBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
 
+         <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Altura</label>
+        <asp:TextBox ID="AlturaBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
+
+         <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Codigo Postal</label>
+        <asp:TextBox ID="CodigoBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
+
+         <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Provincia</label>
+        <asp:TextBox ID="ProvinciaBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
+
+         <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Localidad</label>
+        <asp:TextBox ID="LocalidadBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
+
+         <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Email</label>
+        <asp:TextBox ID="EmailBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
+
+         <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Telefono</label>
+        <asp:TextBox ID="TelefonoBox" CssClass="form-control" runat="server" />  
+         
+     </div>  
+      </div>
+        <asp:Button ID="Agregar" CssClass="btn btn-primary" Text="Agregar" runat="server" OnClick="Agregar_Click" />
+  
 </div>
 </asp:Content>
