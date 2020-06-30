@@ -9,8 +9,8 @@ namespace Dominio
    public class Categoria
     {   public Categoria()
         {
-            Id = 0;
-            Nombre = "";
+        
+            
             Eliminado = false;
 
         }

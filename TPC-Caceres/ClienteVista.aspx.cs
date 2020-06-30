@@ -23,7 +23,7 @@ namespace TPC_Caceres
                 dgvClientes.DataSource = negocio.ListarClientes();
                 dgvClientes.DataBind();
                 dgvClientes.RowStyle.CssClass = "font-weight-bold";
-                if (dgvClientes.DataSource != null)
+                if (negocio.ListarClientes().Count() >= 1)
                 {
                     dgvClientes.HeaderRow.CssClass = "bg-primary";
                 }

@@ -33,15 +33,6 @@ namespace TPC_Caceres
         protected global::System.Web.UI.WebControls.TextBox DescBox;
 
         /// <summary>
-        /// Control CategoriaBox.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CategoriaBox;
-
-        /// <summary>
         /// Control cboCategoria.
         /// </summary>
         /// <remarks>
@@ -49,15 +40,6 @@ namespace TPC_Caceres
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList cboCategoria;
-
-        /// <summary>
-        /// Control SubBox.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SubBox;
 
         /// <summary>
         /// Control PrecioBox.

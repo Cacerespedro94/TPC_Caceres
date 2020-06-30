@@ -11,7 +11,16 @@ namespace TPC_Caceres
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session[Session.SessionID + "Administrador"] == null)
+            {
+                 Response.Redirect("Login.aspx");
+            }
+        }
 
+        protected void CerrarLINK_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Default.aspx");
         }
     }
 }

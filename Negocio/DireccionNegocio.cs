@@ -94,6 +94,28 @@ namespace Negocio
 
             return IdDireccion;
         }
+        public bool SiExisteDireccion(Direccion aux)
+        {
+
+            DireccionNegocio negocio = new DireccionNegocio();
+            List<Direccion> listaDireccion = negocio.ListarDireccion();
+            
+            foreach (var item in listaDireccion)
+            {
+                if (item.Calle == aux.Calle &&
+                    item.Altura == aux.Altura &&
+                    item.CodigoPostal == aux.CodigoPostal &&
+                    item.Provincia == aux.Provincia &&
+                    item.Localidad == aux.Localidad)
+                {
+                    return true;
+                }
+
+            }
+
+
+            return false;
+        }
 
 
 

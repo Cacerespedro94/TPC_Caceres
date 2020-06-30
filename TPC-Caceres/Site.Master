@@ -71,93 +71,55 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-<%--        <div>
-        <div class="navbar navbar-expand-lg bg-light navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span cl--%><%--ass="icon-bar"></span>
-                    </button>--%>
-                    
-                    <%-- <a class="navbar-brand text-light" runat="server">LOGO</a>--%>
-              <%--  </div>--%>
-            <%--    <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav ">
-                        <li><a class="text-dark" runat="server" href="~/ListaDeProductos">Inicio</a></li>
-                        <li><a class="text-dark" runat="server" href="~/Carro">Productos</a></li>
-                        <li><a class="text-dark" runat="server" href="~/Carro">Carrito de compras</a></li>
-                        <li>
-                            <img id="Imagen" src="https://image.flaticon.com/icons/png/512/833/833486.png" alt="Alternate Text" />
-                        </li>
-                        <li>
-                            <asp:Label ID="Conta" CssClass="Contador font-weight-bold" Text="" runat="server" /></li>
-                        <li><a class="text-dark" runat="server" href="~/Carro">Cuenta</a></li>
 
-                    </ul>--%>
-<%--                <nav class="navbar navbar-expand-lg">
-      <div class="container">
-            <asp:Image CssClass="logo" ImageUrl="~/Images/Logoo.png" runat="server" />
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <ion-icon name="menu-outline"></ion-icon>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link text-dark" runat="server" href="~/Default">Inicio</a>
-      </li>
-      <li class="nav-item">
-        
-          <a class="text-dark nav-link" runat="server" href="~/Productos">Productos</a>
-      </li>
-     <li class="nav-item">
-         <a class="text-dark nav-link" runat="server" href="~/Carrito">Carrito de compras</a>
-      </li>
-      <li class="nav-item">
-      
-           <a class="text-dark nav-link" runat="server" href="~/Login">Cuenta</a>
-          
-      </li> 
-     <li class="nav-item">
-        <asp:Label ID="Conta" CssClass="Contador font-weight-bold" Text="" runat="server" /></li>
-      </li>
-    </ul>
-   </div>
-  </div>
-</nav>
-                </div>
-            </div>
-        </div>--%>
  <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+     >
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+     <div class="container">
   <a class="navbar-brand" href="#">EN CONCRETO</a>
-
+</div>
+  <div class="container">
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link text-dark" runat="server" href="~/Default">Inicio</a>
+        <a class="nav-link text-dark font-weight-bold" runat="server" href="~/Default">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="text-dark nav-link" runat="server" href="~/Productos">Productos</a>
+        <a class="text-dark nav-link font-weight-bold" runat="server" href="~/Productos">Productos</a>
       </li>
       <li class="nav-item">
-         <a class="text-dark nav-link" runat="server" href="~/Carrito">Carrito de compras</a>
+         <a class="text-dark nav-link font-weight-bold" runat="server" href="~/Carrito">Carrito de compras</a>
       </li>
          <li class="nav-item">
-            
-          <a class="text-dark nav-link" runat="server" href="~/Login">Cuenta</a>
+<%--             <asp:LinkButton  ID="Cuenta" CssClass="btn btn-secondary dropdown-toggle" Text="Cuenta" runat="server" />--%>
+   <asp:DropDownList OnSelectedIndexChanged="Cuenta_SelectedIndexChanged" AutoPostBack="true" ID="Cuenta" runat="server"  Font-Names="Andalus" CssClass="ddl">
+    <asp:ListItem Text="Mi Cuenta"></asp:ListItem>
+       
+       <asp:ListItem Text="Compras"></asp:ListItem>
+       <asp:ListItem Text="Configuración"></asp:ListItem>
+       <asp:ListItem Text="Cerrar Sesión"></asp:ListItem>
+</asp:DropDownList>
+             <asp:LinkButton OnClick="Iniciar_Click" ID="Iniciar" CssClass="text-dark nav-link font-weight-bold" Text="Iniciar Sesion" runat="server" />
+
+      </li>
+
+        
+   <li class="nav-item">
+      
+   <asp:LinkButton ID="CerrarLINK" OnClick="CerrarLINK_Click" CssClass="text-dark nav-link font-weight-bold" Text="Cerrar Sesión" runat="server" />                  
       </li>
     </ul>
-    <div class="form-inline my-2 my-lg-0">
+<%--    <div class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </div>
+    </div>--%>
   </div>
+      </div>
+
 </nav>
+
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
@@ -169,6 +131,9 @@
 
     </form>
 </body>
+    <%
+
+      %>
 <script>
 <%--    var Cantidad = parseInt(<%=Conta.Text%>);
     if (Cantidad == 0) {

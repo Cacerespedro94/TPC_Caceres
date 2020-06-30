@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -81,6 +82,25 @@ namespace Negocio
             }
 
             return IdContacto;
+
+
+        }
+
+        public bool SiExisteContacto(Contacto aux)
+        {
+            ContactoNegocio negocio = new ContactoNegocio();
+            List<Contacto> listaContacto = negocio.ListarContacto();
+            
+            foreach (var item in listaContacto)
+            {
+                if (item.Telefono == aux.Telefono && item.Email == aux.Email)
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
 
 
         }

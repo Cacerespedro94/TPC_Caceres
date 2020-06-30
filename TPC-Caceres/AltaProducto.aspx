@@ -19,20 +19,15 @@
           <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationCustom01">Categoria</label>
-        <asp:TextBox ID="CategoriaBox" CssClass="form-control" runat="server" /> 
-         <asp:DropDownList ID="cboCategoria" runat="server">
+        
+         <asp:DropDownList OnSelectedIndexChanged="cboCategoria_SelectedIndexChanged" ID="cboCategoria" AutoPostBack="true" runat="server">
         
     </asp:DropDownList>
+
          
      </div>  
       </div>
-                <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom01">SubCategoria</label>
-        <asp:TextBox ID="SubBox" CssClass="form-control" runat="server" />  
-         
-     </div>  
-      </div>
+
           <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationCustom01">Precio</label>

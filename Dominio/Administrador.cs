@@ -9,6 +9,10 @@ namespace Dominio
 {
    public class Administrador:Persona
     {
-        
+        public Administrador()
+        {
+            User = new Usuario();
+        }
+        public bool Eliminado { get; set; }
     }
 }

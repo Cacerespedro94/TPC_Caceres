@@ -9,6 +9,19 @@ namespace Dominio
 {
   public class Direccion
     {
+        public Direccion()
+        {
+            Id = 0;
+            Calle = "";
+            Altura = 0;
+            CodigoPostal = "";
+            Provincia = "";
+            Localidad = "";
+            Departamento = "";
+
+
+
+        }
         public int Id { get; set; }
         public string Calle { get; set; }
         public int Altura { get; set; }

@@ -25,10 +25,15 @@
             <div class="col-sm-9 ">
                 <asp:GridView CssClass="table bg-light" ID="dgvCarrito" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvCarrito_SelectedIndexChanged" OnRowCommand="dgvCarrito_RowCommand">
                     <Columns>
+                        
                         <asp:BoundField HeaderText="Id" DataField="Id" ItemStyle-CssClass="oculto" HeaderStyle-CssClass="oculto" />
                         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                         <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                         <asp:BoundField HeaderText="Precio" DataField="Precio" />
+                        <asp:ButtonField HeaderText="Disminuir" ButtonType="Link" ControlStyle-CssClass="btn btn-secondary" Text="-" CommandName="Restar" />
+                        <asp:BoundField HeaderText="Cantidad" DataField="CantidadUnidades" />
+                        <asp:ButtonField HeaderText="Agregar" ButtonType="Link" ControlStyle-CssClass="btn btn-secondary" Text="+" CommandName="Agregar" />
+
                         <asp:ButtonField HeaderText="" ButtonType="Link" ControlStyle-CssClass="btn btn-danger" Text="Eliminar" CommandName="Select" />
                     </Columns>
 
@@ -56,7 +61,8 @@
         <div class="row">
             <div class="col sm-9"></div>
             <div class="col sm-3"></div>
-            <a class="btn btn-success" id="btnSeguir" href="#">Pagar</a>
+            <asp:Button OnClick="btnSeguir_Click" class="btn btn-success" id="btnSeguir" Text="Comprar" runat="server" />
+           
         </div>
 
     </div>

@@ -9,6 +9,11 @@ namespace Dominio
 {
    public class Contacto
     {
+        public Contacto()
+        {
+            Email = "";
+            Telefono = "";
+        }
         public int Id { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }

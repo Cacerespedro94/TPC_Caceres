@@ -24,7 +24,6 @@ namespace Negocio
                 datos.agregarParametro("@Nombre", nuevo.Nombre);
                 datos.agregarParametro("@Descripcion", nuevo.Descripcion);
                 datos.agregarParametro("@IdCategoria", nuevo.Categoria.Id.ToString());
-                datos.agregarParametro("@IdSubCategoria", nuevo.sub.Id.ToString());
                 datos.agregarParametro("@Precio", nuevo.Precio);
                 datos.agregarParametro("@ImagenUrl", nuevo.ImagenUrl);
 
@@ -69,7 +68,6 @@ namespace Negocio
                 datos.agregarParametro("@Nombre", nuevo.Nombre);
                 datos.agregarParametro("@Descripcion", nuevo.Descripcion);
                 datos.agregarParametro("@IdCategoria", nuevo.Categoria.Id.ToString());
-                datos.agregarParametro("@IdSubCategoria", nuevo.sub.Id.ToString());
                 datos.agregarParametro("@Precio", nuevo.Precio);
                 datos.agregarParametro("@ImagenUrl", nuevo.ImagenUrl);
 
@@ -101,12 +99,9 @@ namespace Negocio
                     aux.Categoria = new Categoria();
                     aux.Categoria.Nombre = (string)datos.lector["DescCat"];
                     aux.Categoria.Id = datos.lector.GetInt64(4);
-                    aux.sub = new SubCategoria();
-                    aux.sub.Nombre = (string)datos.lector["NombreCat"];
-                    aux.sub.Id = datos.lector.GetInt32(6);
-                    aux.ImagenUrl = datos.lector.GetString(7);
+                    aux.ImagenUrl = datos.lector.GetString(5);
                     aux.Precio = Decimal.Round((decimal)datos.lector["Precio"], 2);
-                    aux.Eliminado = datos.lector.GetBoolean(9);
+                    aux.Eliminado = datos.lector.GetBoolean(7);
 
                     listadoArticulo.Add(aux);
                 }

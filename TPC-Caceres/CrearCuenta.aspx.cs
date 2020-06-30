@@ -28,36 +28,36 @@ namespace TPC_Caceres
         {
             try
             {
-                int IdDireccion=0;
-                int IdContacto=0;
-                direccion.Calle = CalleBox.Text;
-                direccion.Altura = Convert.ToInt32(AlturaBox.Text);
-                direccion.Provincia = ProvinciaBox.Text;
-                direccion.CodigoPostal = CodigoBox.Text;
-                direccion.Localidad = LocalidadBox.Text;
+                //int IdDireccion=0;
+                //int IdContacto=0;
+                //direccion.Calle = CalleBox.Text;
+                //direccion.Altura = Convert.ToInt32(AlturaBox.Text);
+                //direccion.Provincia = ProvinciaBox.Text;
+                //direccion.CodigoPostal = CodigoBox.Text;
+                //direccion.Localidad = LocalidadBox.Text;
 
             
 
-                direccionNegocio.Agregar(direccion);
+                //direccionNegocio.Agregar(direccion);
                 //Busca el Id de la direccion Agregada.
                 
                
-                IdDireccion = direccionNegocio.BuscarIdDireccion(direccion);
+                //IdDireccion = direccionNegocio.BuscarIdDireccion(direccion);
 
-                contact.Email = EmailBox.Text;
-                contact.Telefono = TelefonoBox.Text;
+                //contact.Email = EmailBox.Text;
+                //contact.Telefono = TelefonoBox.Text;
 
-                contactoNegocio.Agregar(contact);
+                //contactoNegocio.Agregar(contact);
 
-                IdContacto = contactoNegocio.BuscarIdContacto(contact);
+                //IdContacto = contactoNegocio.BuscarIdContacto(contact);
                 
-                cliente.Dni = Convert.ToInt64(DniBox.Text);
+                //cliente.Dni = Convert.ToInt64(DniBox.Text);
                 cliente.Nombre = NombreBox.Text;
                 cliente.Apellido = ApellidoBox.Text;
                 cliente.User.Login = NombreUsuarioBox.Text;
                 cliente.User.Password = ContraseñaBox.Text;
-                cliente.direccion.Id = IdDireccion;
-                cliente.contacto.Id = IdContacto;
+                //cliente.direccion.Id = IdDireccion;
+                //cliente.contacto.Id = IdContacto;
                 
 
                 clientenegocio.Agregar(cliente);

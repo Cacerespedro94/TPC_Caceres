@@ -83,10 +83,10 @@ namespace Negocio
                 {
                     aux = new Categoria();
 
-                    aux.Id = datos.lector.GetInt32(0);
+                    aux.Id = datos.lector.GetInt64(0);
                     aux.Nombre = datos.lector.GetString(1);
                  
-                    aux.Eliminado = datos.lector.GetBoolean(3);
+                    aux.Eliminado = datos.lector.GetBoolean(2);
 
                     listadoCategoria.Add(aux);
                 }

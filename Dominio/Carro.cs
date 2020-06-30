@@ -21,6 +21,5 @@ namespace Dominio
         public int Cantidad { get; set; }
         public decimal SubTotal { get; set; }
         
-
     }
 }

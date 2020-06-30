@@ -81,46 +81,41 @@ namespace Negocio
                 throw ex;
             }
         }
-        //public List<Articulo> ListarArticulos()
-        //{
-        //    List<Articulo> listadoArticulo = new List<Articulo>();
-        //    Articulo aux;
-        //    AccesoDatos datos = new AccesoDatos();
-        //    try
-        //    {
-        //        datos.setearSP("spListarProductos");
-        //        datos.ejecutarLector();
-        //        while (datos.lector.Read())
-        //        {
-        //            aux = new Articulo();
+        public List<Administrador> ListarAdministrador()
+        {
+            List<Administrador> listadoAdministrador = new List<Administrador>();
+            Administrador aux;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearSP("spListarAdministrador");
+                datos.ejecutarLector();
+                while (datos.lector.Read())
+                {
+                    aux = new Administrador();
+                  
+                    aux.Id = datos.lector.GetInt32(0);
+                    aux.Nombre = datos.lector.GetString(1);
+                    aux.Apellido = datos.lector.GetString(2);
+                    aux.User.Login = datos.lector.GetString(3);
+                    aux.User.Password = datos.lector.GetString(4);
+                    aux.User.tipo = datos.lector.GetInt32(5);
+               
 
-        //            aux.Id = datos.lector.GetInt32(0);
-        //            aux.Nombre = datos.lector.GetString(1);
-        //            aux.Descripcion = datos.lector.GetString(2);
-        //            aux.Categoria = new Categoria();
-        //            aux.Categoria.Nombre = (string)datos.lector["DescCat"];
-        //            aux.Categoria.Id = datos.lector.GetInt64(4);
-        //            aux.sub = new SubCategoria();
-        //            aux.sub.Nombre = (string)datos.lector["NombreCat"];
-        //            aux.sub.Id = datos.lector.GetInt32(6);
-        //            aux.ImagenUrl = datos.lector.GetString(7);
-        //            aux.Precio = Decimal.Round((decimal)datos.lector["Precio"], 2);
-        //            aux.Eliminado = datos.lector.GetBoolean(9);
+                    listadoAdministrador.Add(aux);
+                }
 
-        //            listadoArticulo.Add(aux);
-        //        }
+                return listadoAdministrador;
+            }
+            catch (Exception ex)
+            {
 
-        //        return listadoArticulo;
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        datos.cerrarConexion();
-        //    }
-        //}
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
+    }
     }

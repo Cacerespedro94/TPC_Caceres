@@ -19,7 +19,7 @@ namespace Dominio
             sub = new SubCategoria();
             ImagenUrl = "";
             Precio = 0;
-            CantidadUnidades = 0;
+            CantidadUnidades = 1;
             Stock = 0;
             Eliminado = false;
         }
@@ -34,6 +34,6 @@ namespace Dominio
         public bool Eliminado { get; set; }
         public int Stock { get; set; }
     }
-
+   
 }
 
