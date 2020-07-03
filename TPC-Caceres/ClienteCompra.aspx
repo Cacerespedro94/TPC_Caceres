@@ -22,12 +22,12 @@
 
                 </asp:GridView>--%>
 
-       <asp:GridView CssClass="table bg-light" Id="DgvCompra" runat="server" AutoGenerateColumns="false" OnRowCommand="DgvCompra_RowCommand" OnSelectedIndexChanged="DgvCompra_SelectedIndexChanged">
+       <asp:GridView CssClass="table bg-light mt-5" Id="DgvCompra" runat="server" AutoGenerateColumns="false" OnRowCommand="DgvCompra_RowCommand" OnSelectedIndexChanged="DgvCompra_SelectedIndexChanged">
                     <Columns>
 
                         <%--<asp:BoundField HeaderText="Id" DataField="Id" ItemStyle-CssClass="oculto" HeaderStyle-CssClass="oculto" />--%>
                         <asp:BoundField HeaderText="Id" DataField="Id" />
-                        <asp:BoundField HeaderText="Fecha" DataField="fecha" />
+                        <asp:BoundField DataFormatString="{0:d}" HeaderText="Fecha" DataField="fecha" />
                         <asp:BoundField HeaderText="Cantidad de Unidades" DataField="carro.Cantidad" />
                         <asp:BoundField HeaderText="Total abonado" DataField="carro.SubTotal" />
               
@@ -41,6 +41,5 @@
 
 
                 </asp:GridView>
-
 
  </asp:Content>

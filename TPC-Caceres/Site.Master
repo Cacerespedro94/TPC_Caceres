@@ -34,9 +34,9 @@
             background-color:white; 
         }*/
         .fondo{
-            background-color: #30476A;
+            background-color: #773328;
         }
-        #Cuerpo{background-color:#eeeeee;}
+        #Cuerpo{ background-color:#0D2626;}
 
      </style>
     <meta charset="utf-8" />
@@ -81,7 +81,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
      <div class="container">
-  <a class="navbar-brand" href="#">EN CONCRETO</a>
+  <a class="navbar-brand text-light font-weight-bold" href="#">EN CONCRETO</a>
 </div>
   <div class="container">
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -121,7 +121,7 @@
    <li class="nav-item">
        <asp:LinkButton runat="server" href="Login.aspx"  ID="Iniciar" CssClass="text-light nav-link font-weight-bold" Text="Iniciar Sesion" runat="server" />
 
-   <asp:LinkButton ID="CerrarLINK" OnClick="CerrarLINK_Click" CssClass="text-light nav-link font-weight-bold " Text="Cerrar Sesión" runat="server" />                  
+   <asp:LinkButton ID="CerrarLINK"  OnClick="CerrarLINK_Click" CssClass="text-light nav-link font-weight-bold " Text="Cerrar Sesión" runat="server" />                  
       </li>
     </ul>
 <%--    <div class="form-inline my-2 my-lg-0">
@@ -137,7 +137,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer class="bg-dark text-light">
+            <footer class="bg-dark text-light navbar navbar-fixed-bottom">
                 <p>&copy; <%: DateTime.Now.Year %> - TPC - Pedro Caceres PROGRAMACION 3</p>
             </footer>
         </div>

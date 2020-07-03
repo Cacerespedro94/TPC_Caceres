@@ -7,7 +7,7 @@
           <asp:TextBox ID="txtBuscador" CssClass=" pt-2 pb-2" runat="server" OnTextChanged="Buscador_TextChanged" />
                 <asp:Button Text="Buscar" CssClass="btn btn-primary" OnClick="Buscador_TextChanged" runat="server" />
        </div>
-       <a href="AltaProducto.aspx" class="btn btn-success mb-3 float-right ">Nuevo Cliente &raquo;</a>
+<%--       <a href="AltaProducto.aspx" class="btn btn-success mb-3 float-right ">Nuevo Cliente &raquo;</a>--%>
     <asp:GridView CssClass="table" ID="dgvClientes" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvClientes_SelectedIndexChanged" OnRowCommand="dgvClientes_RowCommand">
        
  

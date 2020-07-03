@@ -78,3 +78,4 @@ C:\Users\cacer\source\repos\TPC-Caceres\TPC-Caceres\obj\Debug\TPC-Caceres.csproj
 C:\Users\cacer\source\repos\TPC-Caceres\TPC-Caceres\obj\Debug\TPC-Caceres.csproj.CopyComplete
 C:\Users\cacer\source\repos\TPC-Caceres\TPC-Caceres\obj\Debug\TPC-Caceres.dll
 C:\Users\cacer\source\repos\TPC-Caceres\TPC-Caceres\obj\Debug\TPC-Caceres.pdb
+C:\Users\cacer\source\repos\TPC-Caceres\TPC-Caceres\bin\itextsharp.dll

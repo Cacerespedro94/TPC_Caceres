@@ -25,7 +25,8 @@ namespace TPC_Caceres
 
                 if (Session[Session.SessionID + "elemento"] != null)
                 {
-
+                    btnSeguir.Visible = true;
+                    CarroVacio.Visible = false;
                     prue = (Carro)Session[Session.SessionID + "elemento"];
 
                     dgvCarrito.DataSource = prue.Item;
@@ -45,6 +46,11 @@ namespace TPC_Caceres
                     {
                         dgvCarrito.HeaderRow.CssClass = "bg-primary";
                     }
+                }
+                else
+                {
+                    btnSeguir.Visible = false;
+                    CarroVacio.Visible = true;
                 }
 
 

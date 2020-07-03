@@ -65,7 +65,7 @@ Contraseña varchar(100) not null,
 IdTipoUsuario int not null foreign key references TipoUsuario(Id),
 Eliminado bit not null,
 )
-
+select * from Productos_Por_Ventas
 go
 
 Create table Datos_Por_Usuario(
@@ -481,7 +481,7 @@ Create procedure spEliminarCliente --CLIENTE
 
 as
 
-Update Cliente Set Eliminado = 1 where ID =  @ID
+Update Usuario Set Eliminado = 1 where ID =  @ID
 
 go
 
@@ -603,7 +603,7 @@ Create procedure spListarVentasCliente
 as
 
 
-select P.Nombre, p.Precio, v.Fecha, v.Id as Venta, PxV.CantidadUnidades
+select P.Nombre, p.Precio, v.Fecha, v.Id as Venta, PxV.CantidadUnidades, p.ImagenUrl
 
 from producto as p
 inner join  Productos_Por_Ventas as PxV on PxV.IdProducto = p.Id

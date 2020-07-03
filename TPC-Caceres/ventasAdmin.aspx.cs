@@ -72,7 +72,7 @@ namespace TPC_Caceres
                 listaVentas = negocio.ListarVentasCliente(IdVenta);
                 Session.Add(Session.SessionID + "ListaVenta", listaVentas);
 
-                Response.Redirect("DetalleCompra.aspx");
+                Response.Redirect("DetalleVentaAdmin.aspx");
             }
             //= negocio.ListarCompras(cliente).Find(J => J.Id == IdVenta);
         }

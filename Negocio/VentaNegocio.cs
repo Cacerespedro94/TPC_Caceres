@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
+using Microsoft.SqlServer.Server;
+
 namespace Negocio
 {
   public  class VentaNegocio
@@ -49,8 +51,9 @@ namespace Negocio
                     aux.Id = datos.lector.GetInt32(0);
                     aux.cliente.Id = datos.lector.GetInt32(1); 
                     aux.producto.CantidadUnidades = datos.lector.GetInt32(2);
-                    aux.carro.SubTotal = datos.lector.GetDecimal(3);
+                    aux.carro.SubTotal = Decimal.Round(datos.lector.GetDecimal(3),2);
                     aux.fecha = datos.lector.GetDateTime(4);
+                 
 
                     
 
@@ -87,10 +90,12 @@ namespace Negocio
                     aux = new Venta();
 
                     aux.producto.Nombre = datos.lector.GetString(0);
-                    aux.producto.Precio = datos.lector.GetDecimal(1);
+                    aux.producto.Precio = Decimal.Round(datos.lector.GetDecimal(1),2);
                     aux.fecha = datos.lector.GetDateTime(2);
                     aux.Id = datos.lector.GetInt32(3);
                     aux.producto.CantidadUnidades = datos.lector.GetInt32(4);
+                    aux.producto.ImagenUrl = datos.lector.GetString(5);
+
 
                     listadoVenta.Add(aux);
                 }
@@ -125,7 +130,7 @@ namespace Negocio
                 {
                     aux = new Venta();
                     aux.Id = datos.lector.GetInt32(0);
-                    aux.carro.SubTotal = datos.lector.GetDecimal(1);
+                    aux.carro.SubTotal = Decimal.Round(datos.lector.GetDecimal(1),2);
                     aux.fecha = datos.lector.GetDateTime(2);
                     aux.carro.Cantidad = datos.lector.GetInt32(3);
 
@@ -162,7 +167,7 @@ namespace Negocio
                     aux.Id = datos.lector.GetInt32(0);
                     aux.cliente.Apellido = datos.lector.GetString(1);
                     aux.cliente.Nombre = datos.lector.GetString(2);
-                    aux.carro.SubTotal = datos.lector.GetDecimal(3);
+                    aux.carro.SubTotal = Decimal.Round(datos.lector.GetDecimal(3),2);
                     aux.carro.Cantidad = datos.lector.GetInt32(4);
                     aux.fecha = datos.lector.GetDateTime(5);
 

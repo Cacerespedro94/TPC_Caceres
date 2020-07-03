@@ -15,11 +15,14 @@
             font-size: 18px;
         }
 
-        #btnSeguir {
-            margin-right: 2.9em;
-            width: 14.5em;
+        .btnSeguir {
+       position: relative;
+       left:84.5%;
         }
     </style>
+    <div runat="server" id="CarroVacio" >
+    <h1 class="ml-5 text-light">Todavía no tienes nada en tu carrito...</h1>
+        </div>
     <div class="container mt-5">
         <div class="row">
             <div class="col-sm-9 ">
@@ -58,12 +61,12 @@
             </div>
 
         </div>
-        <div class="row">
-            <div class="col sm-9"></div>
-            <div class="col sm-3"></div>
-            <asp:Button OnClick="btnSeguir_Click" class="btn btn-success" id="btnSeguir" Text="Comprar" runat="server" />
+  
+            
+            <asp:Button OnClick="btnSeguir_Click" Cssclass="btn btn-success btnSeguir" id="btnSeguir" Text="Comprar" runat="server" />
+            
            
-        </div>
+    
 
     </div>
 

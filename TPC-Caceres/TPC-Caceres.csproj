@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -124,6 +127,7 @@
     <Content Include="CrearCuenta.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DetalleCompra.aspx" />
+    <Content Include="DetalleVentaAdmin.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -282,6 +286,13 @@
     <Compile Include="DetalleCompra.aspx.designer.cs">
       <DependentUpon>DetalleCompra.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DetalleVentaAdmin.aspx.cs">
+      <DependentUpon>DetalleVentaAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleVentaAdmin.aspx.designer.cs">
+      <DependentUpon>DetalleVentaAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -416,6 +427,9 @@
       <Project>{9b9f6a11-0c3e-4c67-b23e-093bf955741d}</Project>
       <Name>Negocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

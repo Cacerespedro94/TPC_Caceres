@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetalleCompra.aspx.cs" Inherits="TPC_Caceres.DetalleCompra" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMasterAdmin.Master" AutoEventWireup="true" CodeBehind="DetalleVentaAdmin.aspx.cs" Inherits="TPC_Caceres.DetalleVentaAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
+      <style>
                 .Tarjetas {
             width: 200px;
             height: 400px;
@@ -38,7 +38,8 @@
                         </div>
                         <div class="row">
                             <div class="col text-center">
-                                 <h4 class="card-text text-center font-weight-bold text-success mt-3"> Llevás <%#Eval("producto.CantidadUnidades")%> unid.</h4>
+                                  <h4 class="card-text text-center font-weight-bold text-success mt-3"> Lleva <%#Eval("producto.CantidadUnidades")%> unid.</h4>
+
                             </div>
                         </div>
 

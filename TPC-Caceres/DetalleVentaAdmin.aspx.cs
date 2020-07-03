@@ -8,15 +8,15 @@ using Dominio;
 using Negocio;
 namespace TPC_Caceres
 {
-    public partial class DetalleCompra : System.Web.UI.Page
+    public partial class DetalleVentaAdmin : System.Web.UI.Page
     {
         List<Venta> ListaVenta = new List<Venta>();
         Articulo producto = new Articulo();
         ArticuloNegocio negocio = new ArticuloNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-          ListaVenta = (List<Venta>)Session[Session.SessionID + "ListaVenta"];
-          
+            ListaVenta = (List<Venta>)Session[Session.SessionID + "ListaVenta"];
+
             if (!IsPostBack)
             { //pregunto si es la primera carga de la page
 

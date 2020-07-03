@@ -5,7 +5,7 @@
                 <asp:Button Text="Buscar" CssClass="btn btn-primary" OnClick="Buscador_TextChanged" runat="server" />
        </div>
     <a href="AltaProducto.aspx" class="btn btn-success mb-3 float-right  ">Nuevo Producto &raquo;</a>
-    <a href="#" class="btn btn-success mr-3 mb-3 float-right ">Ajuste de Stock &raquo;</a>
+<%--    <a href="#" class="btn btn-success mr-3 mb-3 float-right ">Ajuste de Stock &raquo;</a>--%>
 
            
     <asp:GridView CssClass="table" ID="dgvProductosAdmin" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvProductosAdmin_SelectedIndexChanged" OnRowCommand="dgvProductosAdmin_RowCommand">

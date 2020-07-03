@@ -44,15 +44,18 @@ namespace TPC_Caceres
                 Response.Redirect("Default.aspx");
                          
             }
-      
+
            else
             {
                 listaUsuario = negocio.ListarUsuario();
                 usuario = listaUsuario.Find(J => J.Login == Email && J.Password == Contraseña);
-                if (usuario.TipoUsuario == 1)
+                if (usuario != null)
                 {
+                    if(usuario.TipoUsuario == 1)
+                    { 
                     Session.Add(Session.SessionID + "Usuario", usuario);
                     Response.Redirect("InicioAdmin.aspx");
+                    }
                 }
                 else
                 {

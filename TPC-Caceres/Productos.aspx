@@ -15,11 +15,14 @@
             min-height:200px;
             
         }
+        .centrar{
+            margin-left:38%;
+        }
     </style>
-
+    <div class="centrar">
     <asp:TextBox ID="txtBuscador" CssClass="mt-5 ml-5 ml-2 pt-2 pb-2" runat="server" OnTextChanged="Buscador_TextChanged" />
-    <asp:Button Text="Buscar" CssClass="btn btn-primary" OnClick="Buscador_TextChanged" runat="server" />
-
+    <asp:Button Text="Buscar" CssClass="btn btn-primary " OnClick="Buscador_TextChanged" runat="server" />
+    </div>
     <div class=" card-columns mt-5  " style="margin-left: 10px; margin-right: 10px;">
         <asp:Repeater runat="server" ID="repetidor">
             <ItemTemplate>
