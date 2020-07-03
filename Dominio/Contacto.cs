@@ -11,8 +11,9 @@ namespace Dominio
     {
         public Contacto()
         {
-            Email = "";
-            Telefono = "";
+            Id = 0;
+            Email = "Sin datos";
+            Telefono = "Sin datos";
         }
         public int Id { get; set; }
         public string Email { get; set; }

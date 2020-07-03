@@ -26,7 +26,7 @@ namespace TPC_Caceres
 						Nombrebox.Text = producto.Nombre;
 						DescBox.Text = producto.Descripcion;
 						CategoriaBox.Text = Convert.ToString(producto.Categoria.Id);
-						SubBox.Text = Convert.ToString(producto.sub.Id);
+						Stock.Text = Convert.ToString(producto.Stock);
 						PrecioBox.Text = Convert.ToString(producto.Precio);
 						ImagenBox.Text = producto.ImagenUrl;
 					}
@@ -48,7 +48,7 @@ namespace TPC_Caceres
 			producto.Nombre = Nombrebox.Text;
 			producto.Descripcion = DescBox.Text;
 			producto.Categoria.Id = Convert.ToInt64(CategoriaBox.Text);
-			producto.sub.Id = Convert.ToInt32(SubBox.Text);
+			producto.Stock = Convert.ToInt32(Stock.Text);
 			producto.Precio = Convert.ToDecimal(PrecioBox.Text);
 			producto.ImagenUrl = ImagenBox.Text;
 			neg.modificar(producto);

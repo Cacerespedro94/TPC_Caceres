@@ -25,8 +25,8 @@
       </div>
                 <div class="form-row">
     <div class="col-md-6 mb-3">
-      <label for="validationCustom01">SubCategoria</label>
-        <asp:TextBox ID="SubBox" CssClass="form-control" runat="server" />  
+      <label for="validationCustom01">Stock</label>
+        <asp:TextBox ID="Stock" CssClass="form-control" runat="server" />  
          
      </div>  
       </div>

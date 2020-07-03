@@ -12,13 +12,13 @@ namespace TPC_Caceres
     {
         Direccion direccion = new Direccion();
         DireccionNegocio direccionNegocio = new DireccionNegocio();
-        Cliente cliente = new Cliente();
+        Usuario cliente = new Usuario();
         ClienteNegocio clienteNegocio = new ClienteNegocio();
         
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session[Session.SessionID + "Cliente"] == null)
+            if (Session[Session.SessionID + "Usuario"] == null)
             {
                 Response.Redirect("Login.aspx");
             }
@@ -33,21 +33,22 @@ namespace TPC_Caceres
             direccion.Provincia = ProvinciaBox.Text;
             direccion.CodigoPostal = CodigoBox.Text;
             direccion.Localidad = LocalidadBox.Text;
-            cliente.Dni = Convert.ToInt64(DniBox.Text);
-
-            cliente = (Cliente)Session[Session.SessionID + "Cliente"];
-
             
+
+            cliente = (Usuario)Session[Session.SessionID + "Usuario"];
+            cliente.dni = Convert.ToString(DniBox.Text);
+            int id = cliente.Id;
+
             //Busca el Id de la direccion Agregada.
-            
-            if(!direccionNegocio.SiExisteDireccion(direccion))
+
+            if (!direccionNegocio.SiExisteDireccion(direccion))
             {
                 direccionNegocio.Agregar(direccion);
             }
             IdDireccion = direccionNegocio.BuscarIdDireccion(direccion);
             cliente.direccion.Id = IdDireccion;
-            clienteNegocio.modificar(cliente);
-            Response.Redirect("Productos.aspx");
+            clienteNegocio.ModificarDatosCliente(cliente);
+            Response.Redirect("Carrito.aspx");
         }
     }
 }

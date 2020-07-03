@@ -66,10 +66,32 @@ namespace Negocio
 
                 datos.agregarParametro("@ID", nuevo.Id);
                 datos.agregarParametro("@Nombre", nuevo.Nombre);
+                datos.agregarParametro("@IdCategoria", nuevo.Categoria.Id);
                 datos.agregarParametro("@Descripcion", nuevo.Descripcion);
-                datos.agregarParametro("@IdCategoria", nuevo.Categoria.Id.ToString());
+                datos.agregarParametro("@Stock", nuevo.Stock);
                 datos.agregarParametro("@Precio", nuevo.Precio);
                 datos.agregarParametro("@ImagenUrl", nuevo.ImagenUrl);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void ModificarStockProducto(Articulo nuevo)
+        {
+
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearSP("spModificarStockProducto");
+
+                datos.agregarParametro("@ID", nuevo.Id);
+                datos.agregarParametro("@Stock", nuevo.Stock);
 
                 datos.ejecutarAccion();
 
@@ -102,6 +124,7 @@ namespace Negocio
                     aux.ImagenUrl = datos.lector.GetString(5);
                     aux.Precio = Decimal.Round((decimal)datos.lector["Precio"], 2);
                     aux.Eliminado = datos.lector.GetBoolean(7);
+                    aux.Stock = datos.lector.GetInt32(8);
 
                     listadoArticulo.Add(aux);
                 }

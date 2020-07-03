@@ -12,15 +12,15 @@ namespace TPC_Caceres
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            if (Session[Session.SessionID + "Cliente"] == null)
+            if (Session[Session.SessionID + "Usuario"] == null)
             {
-                Cuenta.Visible = false;
+                navbarDropdown.Visible = false;
                 Iniciar.Visible = true;
                 CerrarLINK.Visible = false;
             }
             else
-            {
-                Cuenta.Visible = true;
+            {   
+                navbarDropdown.Visible = true;
                 Iniciar.Visible = false;
             }
         }
@@ -34,13 +34,12 @@ namespace TPC_Caceres
 
         protected void Cuenta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string Seleccionado;
-            Seleccionado = Cuenta.SelectedItem.Text;
+          
         }
 
         protected void Iniciar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CrearCuenta.aspx");
+            Response.Redirect("Login.aspx");
         }
     }
 }

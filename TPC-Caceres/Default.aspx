@@ -1,17 +1,45 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TPC_Caceres._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+    .Presentacion{
+        margin-left:10%;
+   margin-right: 100px;
+       background-color:#722c2c;
+       border-radius: 15px;
 
-    <div class="jumbotron">
-        <h1>En Concreto</h1>
-        <p class="lead">Trabajando con material noble. Estás a pocos clicks de obtener los productos...</p>
-        <p><a href="Productos.aspx" class="btn btn-success btn-lg">Ver Productos &raquo;</a>
-            <a href="Login.aspx" class="btn btn-primary btn-lg">Iniciar Sesión &raquo;</a>
+    }
+    #formulario{
+        position: relative;
+        left: 220%;
+        
+        
+    }
+    .Formato{
+
+        width:auto;
+    }
+
+
+</style>
+    
+               
+    <div class="jumbotron Presentacion">
+        <h1 class="text-light">En Concreto</h1>
+        <p class="lead text-light">Trabajando con material noble. Estás a pocos clicks de obtener los productos...</p>
+        <p><a runat="server" id="btnVerProductos" href="Productos.aspx" class="btn btn-success btn-lg">Ver Productos &raquo;</a>
+            <a runat="server" id="btnIniciarSesion" href="Login.aspx" class="btn btn-primary btn-lg">Iniciar Sesión &raquo;</a>
+            <a runat="server" id="btnCrearUsuario" href="CrearCuenta.aspx" class="btn btn-info btn-lg">Registrarse &raquo;</a>
         </p>
         
-    </div>
+        </div>
+    
     <section id="Formulario">
-    <form action="" method="POST" id="formulario" onsubmit="return false">
+        
+        <div class="container">
+            <div class="row Formato">
+                <div class="mt-4">
+    <div  id="formulario" onsubmit="return false">
         <div class="form-group">
           <label for="ImputNombre" class="txtForm">Ingrese su nombre</label>
           <input type="text" class="form-control" id="ImputNombre" placeholder="Escriba su nombre...">
@@ -21,7 +49,7 @@
         <div class="form-group">
             <label for="ImputEmail" class="txtForm">Ingrese su email</label>
             <input type="email" class="form-control" id="ImputEmail" placeholder="nombre@ejemplo.com">
-            <span class="Error" id="EmailError"></spand>
+            <span class="Error" id="EmailError"></span>
         </div>
 
         <div class="ImputTexto">
@@ -33,7 +61,11 @@
 
         <div id="boton"><input type="submit" class="btn btn-primary" value="Enviar" id="submit"> 
         </div>
-      </form>
+      </div>
+                    </div>
+            </div>
+            </div>
+            
 </section>
     <div class="row">
         <div class="col-md-4">

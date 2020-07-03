@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         .contenedor{
-            margin-top: 200px;
-            width:300px;
-            height: 250px;
+            margin-top: 50px;
+            width:310px;
+            height: 350px;
             background-color: #CFBA38;
         }
         body{
@@ -15,8 +15,8 @@
     <div class="container contenedor">
      
   <div class="form-group">
-    <label for="exampleInputEmail1">Email</label>
-      <asp:TextBox  TextMode="Email" Cssclass="form-control" ID="EmailBox" runat="server" />
+    <label class="mt-3" for="exampleInputEmail1">Email</label>
+      <asp:TextBox  TextMode="Email" Cssclass="form-control " ID="EmailBox" runat="server" />
     
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>

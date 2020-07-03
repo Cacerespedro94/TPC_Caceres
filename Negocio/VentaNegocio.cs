@@ -110,7 +110,7 @@ namespace Negocio
         }
 
 
-        public List<Venta> ListarCompras(Cliente cliente)
+        public List<Venta> ListarCompras(Usuario usuario)
         {
             List<Venta> listadoVenta = new List<Venta>();
             Venta aux;
@@ -118,7 +118,7 @@ namespace Negocio
             try
             {
                 datos.setearSP("spListarCompras");
-                datos.agregarParametro("@IdCliente", cliente.Id);
+                datos.agregarParametro("@IdCliente", usuario.Id);
                 datos.ejecutarAccion();
                 datos.ejecutarLector();
                 while (datos.lector.Read())

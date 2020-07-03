@@ -12,13 +12,13 @@ namespace Dominio
         {
             carro = new Carro();
             producto = new Articulo();
-            cliente = new Cliente();
+            cliente = new Usuario();
 
         }
         public int Id { get; set; }
         public Carro carro { get; set; }
         public Articulo producto { get; set; }
-        public Cliente cliente { get; set; }
+        public Usuario cliente { get; set; }
         public DateTime fecha { get; set; }
     }
 }

@@ -14,22 +14,47 @@ namespace TPC_Caceres
     {
         Articulo producto = new Articulo();
         ArticuloNegocio negocio = new ArticuloNegocio();
+        public List<Articulo> listaProductos { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Articulo producto = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
-            
-			try
+            listaProductos = negocio.ListarArticulos();
+            try
 			{
-
+                if(!IsPostBack)
+                { 
                 dgvProductosAdmin.DataSource = negocio.ListarArticulos();
                 dgvProductosAdmin.DataBind();
                 dgvProductosAdmin.RowStyle.CssClass = "font-weight-bold";
+                    if (dgvProductosAdmin.DataSource != null)
+                    {
+                        dgvProductosAdmin.HeaderRow.CssClass = "bg-primary";
+                    }
+
+                }
+
+                else
+                {
+                    if (txtBuscador.Text != "")
+                    {
+                        dgvProductosAdmin.DataSource = (List<Articulo>)Session[Session.SessionID + "filtrado"];
+                        dgvProductosAdmin.DataBind();
+
+                    }
+                    else
+                    {
+                        dgvProductosAdmin.DataSource = negocio.ListarArticulos();
+                        dgvProductosAdmin.DataBind();
+                    }
+                }
                 if (dgvProductosAdmin.DataSource != null)
                 {
                     dgvProductosAdmin.HeaderRow.CssClass = "bg-primary";
                 }
             }
+
 			catch (Exception ex)
 			{
 
@@ -62,8 +87,44 @@ namespace TPC_Caceres
             }
 
         }
+        protected void Buscador_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+        
+            try
+            {
+                listaProductos = negocio.ListarArticulos();
+                if (txtBuscador.Text == "")
+                {
+                    listaFiltrada = listaProductos;
+                    Session.Add(Session.SessionID + "filtrado", listaFiltrada);
+                    dgvProductosAdmin.DataSource = listaFiltrada;
+                    dgvProductosAdmin.DataBind();
 
-        protected void dgvProductosAdmin_SelectedIndexChanged(object sender, EventArgs e)
+                }
+                else
+                {
+                    listaFiltrada = listaProductos.FindAll(k => k.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()) ||
+
+                      k.Categoria.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()) ||
+                      k.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()));
+                    Session.Add(Session.SessionID + "filtrado", listaFiltrada);
+                    dgvProductosAdmin.DataSource = listaFiltrada;
+                    dgvProductosAdmin.DataBind();
+                    if (dgvProductosAdmin.DataSource != null)
+                    {
+                        dgvProductosAdmin.HeaderRow.CssClass = "bg-primary";
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+            protected void dgvProductosAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

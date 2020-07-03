@@ -11,7 +11,7 @@ namespace TPC_Caceres
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session[Session.SessionID + "Administrador"] == null)
+            if (Session[Session.SessionID + "Usuario"] == null)
             {
                  Response.Redirect("Login.aspx");
             }

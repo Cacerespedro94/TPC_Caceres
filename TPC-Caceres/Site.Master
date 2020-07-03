@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="TPC_Caceres.SiteMaster" %>
+﻿<%@ Master  Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="TPC_Caceres.SiteMaster" %>
 
 
 <!DOCTYPE html>
@@ -33,8 +33,11 @@
             min-height: 100px;
             background-color:white; 
         }*/
-  
+        .fondo{
+            background-color: #30476A;
+        }
         #Cuerpo{background-color:#eeeeee;}
+
      </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -72,8 +75,8 @@
             </Scripts>
         </asp:ScriptManager>
 
- <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
-     >
+ <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light fondo">
+     
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -84,31 +87,41 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link text-dark font-weight-bold" runat="server" href="~/Default">Inicio</a>
+        <a class="nav-link text-light font-weight-bold" runat="server" href="~/Default">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="text-dark nav-link font-weight-bold" runat="server" href="~/Productos">Productos</a>
+        <a class="text-light nav-link font-weight-bold" runat="server" href="~/Productos">Productos</a>
       </li>
       <li class="nav-item">
-         <a class="text-dark nav-link font-weight-bold" runat="server" href="~/Carrito">Carrito de compras</a>
+         <a class="text-light nav-link font-weight-bold" runat="server" href="~/Carrito">Carrito de compras</a>
       </li>
-         <li class="nav-item">
+       <%--  <li class="nav-item">--%>
 <%--             <asp:LinkButton  ID="Cuenta" CssClass="btn btn-secondary dropdown-toggle" Text="Cuenta" runat="server" />--%>
-   <asp:DropDownList OnSelectedIndexChanged="Cuenta_SelectedIndexChanged" AutoPostBack="true" ID="Cuenta" runat="server"  Font-Names="Andalus" CssClass="ddl">
+<%--   <asp:DropDownList OnSelectedIndexChanged="Cuenta_SelectedIndexChanged" AutoPostBack="true" ID="Cuenta" runat="server"  Font-Names="Andalus" CssClass="nav-item">
     <asp:ListItem Text="Mi Cuenta"></asp:ListItem>
        
        <asp:ListItem Text="Compras"></asp:ListItem>
        <asp:ListItem Text="Configuración"></asp:ListItem>
        <asp:ListItem Text="Cerrar Sesión"></asp:ListItem>
-</asp:DropDownList>
-             <asp:LinkButton OnClick="Iniciar_Click" ID="Iniciar" CssClass="text-dark nav-link font-weight-bold" Text="Iniciar Sesion" runat="server" />
-
+</asp:DropDownList>--%>
+                   <li  id="Cuenta" class="nav-item  dropdown">
+        <a runat="server" class="nav-link dropdown-toggle font-weight-bold text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cuenta
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="ClienteCompra.aspx">Mis Compras</a>
+          <a class="dropdown-item" href="#">Configuracion</a>
+    
+        </div>
       </li>
+            
+   
 
         
    <li class="nav-item">
-      
-   <asp:LinkButton ID="CerrarLINK" OnClick="CerrarLINK_Click" CssClass="text-dark nav-link font-weight-bold" Text="Cerrar Sesión" runat="server" />                  
+       <asp:LinkButton runat="server" href="Login.aspx"  ID="Iniciar" CssClass="text-light nav-link font-weight-bold" Text="Iniciar Sesion" runat="server" />
+
+   <asp:LinkButton ID="CerrarLINK" OnClick="CerrarLINK_Click" CssClass="text-light nav-link font-weight-bold " Text="Cerrar Sesión" runat="server" />                  
       </li>
     </ul>
 <%--    <div class="form-inline my-2 my-lg-0">

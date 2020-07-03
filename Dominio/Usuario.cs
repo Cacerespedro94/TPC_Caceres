@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-   public class Usuario
+    public class Usuario : Persona
     {
+        public Usuario(){
+            TipoUsuario = 0;
+
+            }
         public string Login{ get; set; }
         public string Password { get; set; }
-        public int tipo { get; set; }
+        public int TipoUsuario { get; set; }
+        public string TipoUsuarioNombre { get; set; }
+        public bool Eliminado { get; set; }
     }
 }

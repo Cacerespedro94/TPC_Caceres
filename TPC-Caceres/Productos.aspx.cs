@@ -12,8 +12,8 @@ namespace TPC_Caceres
 {
     public partial class Productos : System.Web.UI.Page
     {
-        
-        public List <Articulo> listaProductos { get; set; }
+
+        public List<Articulo> listaProductos { get; set; }
         public Carro prue = new Carro();
         List<Articulo> listaArticulo;
         Articulo ar = new Articulo();
@@ -36,21 +36,21 @@ namespace TPC_Caceres
                     repetidor.DataBind();
 
                 }
-                //else
-                //{
+                else
+                {
 
-                //    if (txtBuscador.Text != "")
-                //    {
-                //        repetidor.DataSource = (List<Articulo>)Session[Session.SessionID + "filtrado"];
-                //        repetidor.DataBind();
+                    if (txtBuscador.Text != "")
+                    {
+                        repetidor.DataSource = (List<Articulo>)Session[Session.SessionID + "filtrado"];
+                        repetidor.DataBind();
 
-                //    }
-                //    else
-                //    {
-                //        repetidor.DataSource = listaProductos;
-                //        repetidor.DataBind();
-                //    }
-                //}
+                    }
+                    else
+                    {
+                        repetidor.DataSource = listaProductos;
+                        repetidor.DataBind();
+                    }
+                }
 
             }
 
@@ -92,5 +92,73 @@ namespace TPC_Caceres
 
             }
         }
+
+        //protected void txtBuscador_TextChanged(object sender, EventArgs e)
+        //{
+        //    List<Articulo> listaFiltrada;
+        //    try
+        //    {
+        //        listaProductos = negocio.ListarArticulos();
+        //        if (txtBuscador.Text == "")
+        //        {
+        //            listaFiltrada = listaProductos;
+        //            Session.Add(Session.SessionID + "filtrado", listaFiltrada);
+        //            repetidor.DataSource = listaFiltrada;
+        //            repetidor.DataBind();
+
+        //        }
+        //        else
+        //        {
+        //            listaFiltrada = listaProductos.FindAll(k => k.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()) ||
+                     
+        //              k.Categoria.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()) ||
+        //              k.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()));
+        //            Session.Add(Session.SessionID + "filtrado", listaFiltrada);
+        //            repetidor.DataSource = listaFiltrada;
+        //            repetidor.DataBind();
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw ex;
+        //    }
+        //}
+        protected void Buscador_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            try
+            {
+                listaProductos = negocio.ListarArticulos();
+                if (txtBuscador.Text == "")
+                {
+                    listaFiltrada = listaProductos;
+                    Session.Add(Session.SessionID + "filtrado", listaFiltrada);
+                    repetidor.DataSource = listaFiltrada;
+                    repetidor.DataBind();
+
+                }
+                else
+                {
+                    listaFiltrada = listaProductos.FindAll(k => k.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()) ||
+                      
+                      k.Categoria.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()) ||
+                      k.Nombre.ToLower().Contains(txtBuscador.Text.ToLower()));
+                    Session.Add(Session.SessionID + "filtrado", listaFiltrada);
+                    repetidor.DataSource = listaFiltrada;
+                    repetidor.DataBind();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
+
+       
+

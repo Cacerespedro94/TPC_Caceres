@@ -9,7 +9,7 @@ namespace Negocio
 {
   public class AdministradorNegocio
     {
-        public void Agregar(Administrador nuevo)
+        public void Agregar(Usuario nuevo)
         {
            
 
@@ -18,12 +18,12 @@ namespace Negocio
             {
                 datos.setearSP("spAgregarAdministrador");
 
-                datos.agregarParametro("@Nombre", nuevo.Nombre);
-                datos.agregarParametro("@Apellido", nuevo.Apellido);
-                datos.agregarParametro("@Dni", nuevo.Dni.ToString());
-                datos.agregarParametro("@Login", nuevo.User.Login);
-                datos.agregarParametro("@Password", nuevo.User.Password);
-      
+                //datos.agregarParametro("@Nombre", nuevo.Nombre);
+                //datos.agregarParametro("@Apellido", nuevo.Apellido);
+                //datos.agregarParametro("@Dni", nuevo.Dni.ToString());
+                //datos.agregarParametro("@Login", nuevo.User.Login);
+                //datos.agregarParametro("@Password", nuevo.User.Password);
+
                 datos.ejecutarAccion();
 
 
@@ -64,11 +64,11 @@ namespace Negocio
                 datos.agregarParametro("@ID", nuevo.Id);
                 
 
-                datos.agregarParametro("@Nombre", nuevo.Nombre);
-                datos.agregarParametro("@Apellido", nuevo.Apellido);
-                datos.agregarParametro("@Dni", nuevo.Dni.ToString());
-                datos.agregarParametro("@Login", nuevo.User.Login);
-                datos.agregarParametro("@Password", nuevo.User.Password);
+                //datos.agregarParametro("@Nombre", nuevo.Nombre);
+                //datos.agregarParametro("@Apellido", nuevo.Apellido);
+                //datos.agregarParametro("@Dni", nuevo.Dni.ToString());
+                //datos.agregarParametro("@Login", nuevo.User.Login);
+                //datos.agregarParametro("@Password", nuevo.User.Password);
 
                 datos.ejecutarAccion();
 
@@ -94,12 +94,12 @@ namespace Negocio
                 {
                     aux = new Administrador();
                   
-                    aux.Id = datos.lector.GetInt32(0);
-                    aux.Nombre = datos.lector.GetString(1);
-                    aux.Apellido = datos.lector.GetString(2);
-                    aux.User.Login = datos.lector.GetString(3);
-                    aux.User.Password = datos.lector.GetString(4);
-                    aux.User.tipo = datos.lector.GetInt32(5);
+                    //aux.Id = datos.lector.GetInt32(0);
+                    //aux.Nombre = datos.lector.GetString(1);
+                    //aux.Apellido = datos.lector.GetString(2);
+                    //aux.User.Login = datos.lector.GetString(3);
+                    //aux.User.Password = datos.lector.GetString(4);
+                    //aux.User.tipo = datos.lector.GetInt32(5);
                
 
                     listadoAdministrador.Add(aux);

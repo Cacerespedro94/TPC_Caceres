@@ -16,7 +16,7 @@ namespace TPC_Caceres
         List<Articulo> listaArticulo;
         Articulo ar = new Articulo();
         ArticuloNegocio negocio = new ArticuloNegocio();
-        Cliente cliente = new Cliente();
+        Usuario cliente = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,13 +25,13 @@ namespace TPC_Caceres
 
                 if (Session[Session.SessionID + "elemento"] != null)
                 {
-                    
+
                     prue = (Carro)Session[Session.SessionID + "elemento"];
-                
+
                     dgvCarrito.DataSource = prue.Item;
                     dgvCarrito.DataBind();
                     dgvCarrito.RowStyle.CssClass = "font-weight-bold";
-                    
+
                     Total.Text = "$" + prue.SubTotal.ToString();
                     if (prue.Cantidad == 1)
                     {
@@ -47,7 +47,7 @@ namespace TPC_Caceres
                     }
                 }
 
-        
+
             }
 
 
@@ -62,6 +62,7 @@ namespace TPC_Caceres
         protected void dgvCarrito_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+
         }
 
         protected void dgvCarrito_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -73,12 +74,12 @@ namespace TPC_Caceres
             if (e.CommandName == "Select")
             {
 
-                prue.SubTotal -= ar.Precio* ar.CantidadUnidades;
+                prue.SubTotal -= ar.Precio * ar.CantidadUnidades;
                 prue.Cantidad--;
                 prue.Item.Remove(ar);
                 Response.Redirect("Carrito.aspx");
             }
-            if(e.CommandName == "Agregar")
+            if (e.CommandName == "Agregar")
             {
                 prue.Cantidad++;
                 ar.CantidadUnidades++;
@@ -87,7 +88,7 @@ namespace TPC_Caceres
             }
             if (e.CommandName == "Restar")
             {
-                if(ar.CantidadUnidades!=1)
+                if (ar.CantidadUnidades != 1)
                 {
                     prue.Cantidad--;
                     prue.SubTotal -= ar.Precio;
@@ -104,38 +105,53 @@ namespace TPC_Caceres
             List<Venta> listaVenta = new List<Venta>();
             Venta aux = new Venta();
             int contador = 0;
-            cliente = (Cliente)Session[Session.SessionID + "Cliente"];
-                if (Session[Session.SessionID + "Cliente"] == null)
+            cliente = (Usuario)Session[Session.SessionID + "Usuario"];
+            if (Session[Session.SessionID + "Usuario"] == null)
             {
                 Response.Redirect("Login.aspx");
             }
-            else if (cliente.direccion.Id == 0)
+            if (cliente.direccion.Calle == "Sin datos")
             {
-                Response.Redirect("AgregarDireccion");
+                Response.Redirect("AgregarDireccion.aspx");
             }
             else
             {
-               venta.cliente = (Cliente)Session[Session.SessionID + "Cliente"];
-               venta.carro = (Carro)Session[Session.SessionID + "elemento"];
+                venta.cliente = (Usuario)Session[Session.SessionID + "Usuario"];
+                venta.carro = (Carro)Session[Session.SessionID + "elemento"];
                 venta.fecha = DateTime.Now.Date;
+
                 foreach (var item in venta.carro.Item)
                 {
-                    venta.producto = item;
-                    if (contador == 0)
+                    Articulo producto = new Articulo();
+                    ArticuloNegocio negocioArticulo = new ArticuloNegocio();
+                    producto = negocioArticulo.ListarArticulos().Find(k => k.Id == item.Id);
+                    if (item.CantidadUnidades <= producto.Stock)
                     {
-                        negocio.AgregarVenta(venta);
-                        listaVenta = negocio.ListarVentas();
+                        producto.Stock = producto.Stock - item.CantidadUnidades;
+                        negocioArticulo.ModificarStockProducto(producto);
+                        venta.producto = item;
+                        if (contador == 0)
+                        {
+                            negocio.AgregarVenta(venta);
+                            listaVenta = negocio.ListarVentas();
 
-                        contador++;
+                            contador++;
+                        }
+                        aux = listaVenta[listaVenta.Count - 1];
+                        venta.Id = aux.Id;
+
+                        negocio.AgregarProductos_Por_Ventas(venta);
                     }
-                    aux = listaVenta[listaVenta.Count - 1];
-                    venta.Id = aux.Id;
-                   
-                    negocio.AgregarProductos_Por_Ventas(venta);
+                    else
+                    {
+                        Response.Redirect("Default.aspx");
+                        break;
+                    }
+
                 }
-                
+
                 negocio.Ventas_x_Usuario(venta);
-                Response.Redirect("Default.aspx");
+                Response.Redirect("ClienteCompra.aspx");
             }
         }
     }

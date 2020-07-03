@@ -25,38 +25,42 @@ namespace TPC_Caceres
             
             string Contraseña = ContraseñaBox.Text;
 
-            Administrador administrador = new Administrador();
-            AdministradorNegocio administradorNegocio = new AdministradorNegocio();
+     
 
-            List<Administrador> listaAdministrador = new List<Administrador>();
-            listaAdministrador = administradorNegocio.ListarAdministrador();
-
-            Cliente cliente = new Cliente();
+            Usuario usuario = new Usuario();
             ClienteNegocio negocio = new ClienteNegocio();
-            List<Cliente> listacliente = new List<Cliente>();
+            List<Usuario> listaUsuario = new List<Usuario>();
 
-            listacliente = negocio.ListarClientes();
-
-            administrador = listaAdministrador.Find(J => J.User.Login == Email && J.User.Password == Contraseña);
-
-            cliente = listacliente.Find(J => J.User.Login == Email && J.User.Password == Contraseña);
-           
-            if (cliente != null)
-            {
-                Session.Add(Session.SessionID + "Cliente", cliente);
-                Response.Redirect("Default.aspx");
+            listaUsuario = negocio.ListarClientes();
             
-            }
-            if(administrador!= null)
+
+            //administrador = listaAdministrador.Find(J => J.User.Login == Email && J.User.Password == Contraseña);
+
+            usuario = listaUsuario.Find(J => J.Login == Email && J.Password == Contraseña);
+           
+            if (usuario != null)
             {
-                Session.Add(Session.SessionID + "Administrador", administrador);
-                Response.Redirect("InicioAdmin.aspx");
+                Session.Add(Session.SessionID + "Usuario", usuario);
+                Response.Redirect("Default.aspx");
+                         
             }
+      
            else
             {
-                lblError.Text = "Email o contraseña incorrectos";
+                listaUsuario = negocio.ListarUsuario();
+                usuario = listaUsuario.Find(J => J.Login == Email && J.Password == Contraseña);
+                if (usuario.TipoUsuario == 1)
+                {
+                    Session.Add(Session.SessionID + "Usuario", usuario);
+                    Response.Redirect("InicioAdmin.aspx");
+                }
+                else
+                {
+                    lblError.Text = "Email o contraseña incorrectos";
+                }
             }
             
+
 
 
         }

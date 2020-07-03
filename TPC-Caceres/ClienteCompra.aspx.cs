@@ -13,10 +13,10 @@ namespace TPC_Caceres
     public partial class ClienteCompra : System.Web.UI.Page
     {
         VentaNegocio negocio = new VentaNegocio();
-        Cliente cliente = new Cliente();
+        Usuario cliente = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-           cliente = (Cliente)Session[Session.SessionID + "Cliente"];
+           cliente = (Usuario)Session[Session.SessionID + "Usuario"];
             //DgvClienteVenta.DataSource = negocio.ListarVentasCliente(cliente);
             //DgvClienteVenta.DataBind();
 
@@ -34,7 +34,7 @@ namespace TPC_Caceres
 
         protected void DgvCompra_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            cliente = (Cliente)Session[Session.SessionID + "Cliente"];
+            cliente = (Usuario)Session[Session.SessionID + "Usuario"];
 
             if (e.CommandName == "Detalle")
             {

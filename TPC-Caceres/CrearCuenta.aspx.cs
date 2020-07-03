@@ -11,8 +11,12 @@ namespace TPC_Caceres
 {
     public partial class CrearCuenta : System.Web.UI.Page
     {
-        Cliente cliente = new Cliente();
+        Usuario cliente = new Usuario();
+
+        Usuario aux = new Usuario();
+
         ClienteNegocio clientenegocio = new ClienteNegocio();
+        List<Usuario> listaUsuario = new List<Usuario>();
         
         Direccion direccion = new Direccion();
         DireccionNegocio direccionNegocio = new DireccionNegocio();
@@ -54,14 +58,28 @@ namespace TPC_Caceres
                 //cliente.Dni = Convert.ToInt64(DniBox.Text);
                 cliente.Nombre = NombreBox.Text;
                 cliente.Apellido = ApellidoBox.Text;
-                cliente.User.Login = NombreUsuarioBox.Text;
-                cliente.User.Password = ContraseñaBox.Text;
-                //cliente.direccion.Id = IdDireccion;
-                //cliente.contacto.Id = IdContacto;
-                
-
+                cliente.Login = NombreUsuarioBox.Text;
+                cliente.Password = ContraseñaBox.Text;
+                cliente.TipoUsuario = 2;
+                cliente.dni = "Sin datos";
                 clientenegocio.Agregar(cliente);
 
+                //cliente.direccion.Id = IdDireccion;
+                //cliente.contacto.Id = IdContacto;
+                if(!direccionNegocio.SiExisteDireccion(cliente.direccion))
+                    
+                {
+                 direccionNegocio.Agregar(cliente.direccion);
+                 contactoNegocio.Agregar(cliente.contacto);
+
+                }
+                cliente.contacto.Id = contactoNegocio.BuscarIdContacto(cliente.contacto);
+                cliente.direccion.Id = direccionNegocio.BuscarIdDireccion(cliente.direccion);
+                
+                listaUsuario = clientenegocio.ListarUsuario();
+              aux = listaUsuario[listaUsuario.Count - 1];
+                cliente.Id = aux.Id;
+                clientenegocio.AgregarDatosCliente(cliente);
 
             }
             catch (Exception ex)

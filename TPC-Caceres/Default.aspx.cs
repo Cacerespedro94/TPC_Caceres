@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
 
 namespace TPC_Caceres
 {
@@ -11,7 +13,19 @@ namespace TPC_Caceres
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session[Session.SessionID + "Usuario"] == null)
+            {
+                btnCrearUsuario.Visible = true;
+                btnIniciarSesion.Visible = true;
+                
+                
+                
+            }
+            else
+            {
+                btnCrearUsuario.Visible = false;
+                btnIniciarSesion.Visible = false;
+            }
         }
     }
 }

@@ -12,12 +12,12 @@ namespace Dominio
         public Direccion()
         {
             Id = 0;
-            Calle = "";
+            Calle = "Sin datos";
             Altura = 0;
-            CodigoPostal = "";
-            Provincia = "";
-            Localidad = "";
-            Departamento = "";
+            CodigoPostal = "Sin datos";
+            Provincia = "Sin datos";
+            Localidad = "Sin datos";
+            Departamento = "Sin datos";
 
 
 
