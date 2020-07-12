@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
@@ -133,7 +135,7 @@ namespace Negocio
                     aux.carro.SubTotal = Decimal.Round(datos.lector.GetDecimal(1),2);
                     aux.fecha = datos.lector.GetDateTime(2);
                     aux.carro.Cantidad = datos.lector.GetInt32(3);
-
+                    
                     listadoVenta.Add(aux);
                 }
 

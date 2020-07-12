@@ -128,5 +128,26 @@ namespace TPC_Caceres
         {
 
         }
+
+        protected void MasVendidos_Click(object sender, EventArgs e)
+        {   
+            dgvProductosAdmin.Visible = false;
+            dgvMasVendidos.DataSource = negocio.ListarArticulosMasVendidos();
+            dgvMasVendidos.DataBind();
+            dgvMasVendidos.Visible = true;
+            dgvMasVendidos.RowStyle.CssClass = "font-weight-bold";
+            if(negocio.ListarArticulosMasVendidos().Count < 0)
+            {
+
+            dgvMasVendidos.HeaderRow.CssClass = "bg-primary";
+            }
+
+        }
+
+        protected void Todos_Click(object sender, EventArgs e)
+        {
+            dgvMasVendidos.Visible = false;
+            dgvProductosAdmin.Visible = true;
+        }
     }
 }

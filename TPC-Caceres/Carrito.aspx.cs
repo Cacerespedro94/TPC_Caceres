@@ -156,7 +156,7 @@ namespace TPC_Caceres
 
                 }
 
-                negocio.Ventas_x_Usuario(venta);
+           
                 Response.Redirect("ClienteCompra.aspx");
             }
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.Cms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,12 +12,13 @@ namespace TPC_Caceres
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+        
             if (Session[Session.SessionID + "Usuario"] == null)
             {
                 navbarDropdown.Visible = false;
                 Iniciar.Visible = true;
                 CerrarLINK.Visible = false;
+
             }
             else
             {   

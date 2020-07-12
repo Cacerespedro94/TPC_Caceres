@@ -24,6 +24,24 @@ namespace TPC_Caceres
         protected global::System.Web.UI.WebControls.TextBox txtBuscador;
 
         /// <summary>
+        /// Control Todos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton Todos;
+
+        /// <summary>
+        /// Control MasVendidos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton MasVendidos;
+
+        /// <summary>
         /// Control dgvProductosAdmin.
         /// </summary>
         /// <remarks>
@@ -31,5 +49,14 @@ namespace TPC_Caceres
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvProductosAdmin;
+
+        /// <summary>
+        /// Control dgvMasVendidos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dgvMasVendidos;
     }
 }

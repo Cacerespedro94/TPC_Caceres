@@ -15,7 +15,9 @@ namespace Negocio
         public AccesoDatos ()
         {
             conexion = new SqlConnection("data source= DESKTOP-PJFNJ5R\\SQLEXPRESS; initial catalog=CACERES_DB; integrated security=sspi");
+            
             comando = new SqlCommand();
+
             comando.Connection = conexion;
         }
 

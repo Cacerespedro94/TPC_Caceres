@@ -19,10 +19,10 @@ namespace TPC_Caceres
            cliente = (Usuario)Session[Session.SessionID + "Usuario"];
             //DgvClienteVenta.DataSource = negocio.ListarVentasCliente(cliente);
             //DgvClienteVenta.DataBind();
-
+            if (negocio.ListarCompras(cliente)!=null) { 
             DgvCompra.DataSource = negocio.ListarCompras(cliente);
             DgvCompra.DataBind();
-
+            }
             if (!IsPostBack)
             { //pregunto si es la primera carga de la page
 

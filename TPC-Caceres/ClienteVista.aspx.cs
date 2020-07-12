@@ -46,7 +46,7 @@ namespace TPC_Caceres
                         dgvClientes.DataBind();
                     }
                 }
-                    if (dgvClientes.DataSource != null)
+                    if (negocio.ListarClientes().Count < 0)
                     {
                         dgvClientes.HeaderRow.CssClass = "bg-primary";
 

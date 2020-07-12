@@ -12,8 +12,6 @@ Eliminado bit not null,
 go
 
 
-
-
 Create Table Producto( 
 Id int not null primary key identity (1,1),      
 Nombre varchar(100) not null, 
@@ -28,8 +26,6 @@ Eliminado bit not null,
 )
 
 go
-
-
 
 create table Direccion(
 Id int not null primary key identity (1,1),
@@ -65,7 +61,7 @@ Contraseña varchar(100) not null,
 IdTipoUsuario int not null foreign key references TipoUsuario(Id),
 Eliminado bit not null,
 )
-select * from Productos_Por_Ventas
+
 go
 
 Create table Datos_Por_Usuario(
@@ -147,13 +143,13 @@ primary key (IdVenta,IdProducto)
 
 go
 
-Create table Ventas_x_Usuario(
-IdVenta int not null foreign key references Ventas(Id),
-IdCliente int not null foreign key references Usuario(Id)
+--Create table Ventas_x_Usuario(
+--IdVenta int not null foreign key references Ventas(Id),
+--IdCliente int not null foreign key references Usuario(Id)
 
-primary key (IdVenta,IdCliente)
-)
-go
+--primary key (IdVenta,IdCliente)
+--)
+--go
 
 
 insert into CATEGORIA values ('Topes',0),('Macetas',0), ('Postes',0)
@@ -170,22 +166,23 @@ insert into Producto values ('Maceta de interior', ' de cemento para Souvenir', 
 
 
 go
---SP LISTAR
-create procedure spListarProductos --PRODUCTO
+------------------------------------------STORE---PROCEDURE-----------------------------------------------------------------
+
+create procedure spListarProductos --PRODUCTO-LISTAR
 as
 
 select a.id, a.Nombre, a.Descripcion, C.Nombre as DescCat, C.Id as IdCat,  a.ImagenUrl, a.Precio, a.Eliminado, a.Stock from Producto as A inner join Categoria as C on C.Id = a.IdCategoria
 
 go
 
-create procedure spListarCategoria --CATEGORIA
+create procedure spListarCategoria --CATEGORIA-LISTAR
 as
 
 select c.id, c.nombre,c.eliminado from Categoria as c where c.Eliminado != 1
 
 go
 
-create procedure spListarSubCategoria --SUBCATEGORIA
+create procedure spListarSubCategoria --SUBCATEGORIA-LISTAR
 as
 
 select s.id, s.nombre,s.eliminado from SubCategoria as s where s.Eliminado != 1
@@ -205,8 +202,7 @@ go
 
 ----go
 
-
-Create procedure spListarCliente -- CLIENTE
+Create procedure spListarCliente -- CLIENTE-LISTAR
 as
 
 Select u.Id, u.Dni, u.Nombre, u.apellido, t.Id as IdTipoUsuario , t.Nombre, u.IngresoSesion, U.Contraseña,
@@ -226,7 +222,7 @@ go
 
 
 
-Create procedure spListarUsuario -- USUARIO
+Create procedure spListarUsuario -- USUARIO-LISTAR
 as
 
 Select u.Id,  u.Nombre, u.apellido, t.Id as IdTipoUsuario , t.Nombre, u.IngresoSesion, U.Contraseña,
@@ -240,19 +236,19 @@ left join Datos_Por_Usuario as Datos on Datos.IdUsuario = u.Id
 go
 
 
-Create procedure spListarAdministrador --ADMINISTRADOR
-as
-Select A.Id, A.Nombre, A.Apellido, A.IngresoSesion, a.Contraseña, T.Id
+--Create procedure spListarAdministrador --ADMINISTRADOR
+--as
+--Select A.Id, A.Nombre, A.Apellido, A.IngresoSesion, a.Contraseña, T.Id
 
-from Administrador as A
-inner join TipoUsuario as T on t.Id = a.IdTipoUsuario
-where A.Eliminado not like 1
-
-
-go
+--from Administrador as A
+--inner join TipoUsuario as T on t.Id = a.IdTipoUsuario
+--where A.Eliminado not like 1
 
 
-create procedure  spListarDireccion -- DIRECCION
+--go
+
+
+create procedure  spListarDireccion -- DIRECCION-LISTAR
 as
 select D.Id,D.Calle, D.Altura, D.CodigoPostal, D.Provincia,D.Localidad
 from Direccion as d
@@ -263,7 +259,7 @@ as
 Select * from Ventas
 
 go
-create procedure spListarContacto -- CONTACTO
+create procedure spListarContacto -- CONTACTO-LISTAR
 as
 select c.Id, c.Email, c.Telefono
 from contacto as c
@@ -291,7 +287,7 @@ go
 
 --SP AGREGAR
 
-create procedure spAgregar --PRODUCTO
+create procedure spAgregar --PRODUCTO-AGREGAR
 
 @Nombre varchar(100), 
 @Descripcion varchar(100), 
@@ -306,21 +302,21 @@ go
 
 
 
-create procedure spAgregarCategoria --CATEGORIA
+create procedure spAgregarCategoria --CATEGORIA-AGREGAR
 
 @Nombre varchar(100)
 as 
 Insert into Categoria values(@Nombre,0)
 go
 
-create procedure spAgregarSubCategoria --SUBCATEGORIA
+create procedure spAgregarSubCategoria --SUBCATEGORIA-AGREGAR
 
 @Nombre varchar(100)
 as 
 Insert into SubCategoria values(@Nombre,0)
 go
 
-Create procedure spAgregarDatosCliente
+Create procedure spAgregarDatosCliente --DATOS-CLIENTE--AGREGAR
 @IdUsuario int,
 @IdContacto int,
 @IdDireccion int
@@ -331,7 +327,7 @@ values (@IdUsuario,@IdContacto,@IdDireccion)
 go
 
 
-Create procedure spAgregarCliente --CLIENTE
+Create procedure spAgregarCliente --CLIENTE-AGREGAR
 
 --@Dni bigint,
 @Nombre varchar(100),
@@ -350,7 +346,7 @@ values (@Nombre, @Apellido,@Dni,@IngresoSesion,@Contraseña,@IdTipoUsuario,0)
 
 go
 
-Create procedure spAgregarAdministrador --ADMINISTRADOR
+Create procedure spAgregarAdministrador --ADMINISTRADOR--AGREGAR
 
 @Nombre varchar(100),
 @Apellido varchar(100),
@@ -372,7 +368,7 @@ exec spAgregarAdministrador 'Pedro', 'Caceres', 'Cacerespedro@gmail.com','0176',
 
 go
 
-create procedure spAgregarVenta
+create procedure spAgregarVenta --VENTA-AGREGAR
 @IdCliente int,
 @Cantidad int ,
 @Total money,
@@ -384,7 +380,8 @@ values (@IdCliente, @Cantidad,@Total,@Fecha)
 
 go
 
-create procedure spAgregarProductos_Por_Ventas
+go
+create procedure spAgregarProductos_Por_Ventas --PRODUCTOS-POR-VENTAS--AGREGAR
 @IdVenta int,
 @IdProducto int,
 @CantidadUnidades int,
@@ -396,17 +393,30 @@ values (@IdVenta, @IdProducto,@CantidadUnidades,@Precio)
 
 go
 
-Create procedure spVentas_x_Usuario
-@IdCliente int,
-@IdVenta int
-as
-insert into Ventas_x_Usuario(IdCliente,IdVenta)
-values (@IdCliente,@IdVenta)
+exec spAgregarVenta 3,3,4000,'2020-03-03'
+exec spAgregarVenta 2,2,3000,'2020-03-03'
+exec spAgregarVenta 3,5,6000,'2020-03-03'
+exec spAgregarVenta 2,3,7000,'2018-03-03'
+
+exec spAgregarProductos_Por_Ventas 1,3,2,3200
+exec spAgregarProductos_Por_Ventas 2,1,1,3200
+exec spAgregarProductos_Por_Ventas 3,5,1,2500
+exec spAgregarProductos_Por_Ventas 4,3,10,2500
 
 go
 
 
-create procedure spAgregarDireccion --DIRECCION
+--Create procedure spVentas_x_Usuario --
+--@IdCliente int,
+--@IdVenta int
+--as
+--insert into Ventas_x_Usuario(IdCliente,IdVenta)
+--values (@IdCliente,@IdVenta)
+
+--go
+
+
+create procedure spAgregarDireccion --DIRECCION---AGREGAR
 
 @Calle varchar(100),
 @Altura int,
@@ -421,7 +431,7 @@ go
 
 
 
-create procedure spAgregarContacto -- CONTACTO
+create procedure spAgregarContacto -- CONTACTO--AGREGAR
 @Email varchar(100),
 @Telefono varchar(100)
 as 
@@ -429,17 +439,17 @@ insert into contacto values (@Email,@Telefono)
 
 go
 
-Create Procedure spAgregarProveedor -- PROVEEDOR
+--Create Procedure spAgregarProveedor -- PROVEEDOR--AGREGAR
 
-@Nombre varchar(100),
-@IdDireccion int,
-@IdContacto int
+--@Nombre varchar(100),
+--@IdDireccion int,
+--@IdContacto int
 
-as
+--as
 
-insert into Proveedor values (@Nombre, @IdDireccion, @IdContacto,0)
+--insert into Proveedor values (@Nombre, @IdDireccion, @IdContacto,0)
 
-go
+--go
 
 Create procedure spAgregarMaterial -- MATERIAL
 
@@ -595,23 +605,6 @@ select * from usuario
 
 --go
 
-Create procedure spListarVentasCliente
-
-
-@IdVenta int
-
-as
-
-
-select P.Nombre, p.Precio, v.Fecha, v.Id as Venta, PxV.CantidadUnidades, p.ImagenUrl
-
-from producto as p
-inner join  Productos_Por_Ventas as PxV on PxV.IdProducto = p.Id
-inner join Ventas as V on v.Id = PxV.IdVenta
-
-
-Where v.Id = @IdVenta
-go
 
 
 
@@ -651,10 +644,61 @@ go
 
 create procedure spListarVentasAdministrador
 as
-select distinct v.Id, c.Apellido,c.nombre, v.total, v.Cantidad, v.fecha
+select v.Id, c.Apellido,c.nombre, v.total, v.Cantidad, v.fecha
 from Ventas as V
-inner join Ventas_x_Usuario as VxU on Vxu.IdVenta = v.Id
-inner join Usuario as c on c.Id = VxU.IdCliente
+
+inner join Usuario as c on c.Id = v.IdCliente
 inner join Productos_Por_Ventas as PxV on PxV.IdVenta = v.Id
 inner join Producto as P on P.Id = PxV.IdProducto 
+
 go
+
+--(cast(datediff(dd,FechaNac,GETDATE()) / 365.25 as int))as 'Edad' 
+
+Create view vwListarRankingProductos
+
+as 
+
+Select top 10 p.Id, p.Nombre, p.Precio, p.Descripcion, Sum(ppv.CantidadUnidades) as CantidadVendidas, v.Fecha
+from Producto as p
+inner join Productos_Por_Ventas as PpV on PpV.IdProducto = p.Id 
+inner join Ventas as v on v.id = ppv.IdVenta
+group by p.id,p.Nombre,p.Precio,p.Descripcion,p.IdCategoria,v.Fecha,v.Id
+
+having 1 > (select cast(datediff(dd,v.Fecha,GETDATE()) / 365.25 as int) as [Nueva] from ventas as ve 
+where ve.Id = v.Id
+)
+order by CantidadVendidas desc
+
+go
+Create procedure spListarVentasCliente
+
+
+@IdVenta int
+
+as
+
+select P.Nombre, p.Precio, v.Fecha, v.Id as Venta, PxV.CantidadUnidades, p.ImagenUrl
+
+from producto as p
+inner join  Productos_Por_Ventas as PxV on PxV.IdProducto = p.Id
+inner join Ventas as V on v.Id = PxV.IdVenta
+
+
+Where v.Id = @IdVenta
+go
+
+--Create view vwListarRankingMayorRecaudacion
+
+--as
+
+--Select top 5 p.Id, p.Nombre, p.Precio, p.Descripcion, sum(ppv.CantidadUnidades) as CantidadUnidades, Sum(ppv.CantidadUnidades * PpV.Precio) as PrecioRecaudado
+--from Producto as p
+--inner join Productos_Por_Ventas as PpV on PpV.IdProducto = p.Id
+--inner join ventas as v on v.
+
+--group by p.id,p.Nombre,p.Precio,p.Descripcion,ppv.CantidadUnidades
+--order by PrecioRecaudado desc
+--where v.
+--go
+

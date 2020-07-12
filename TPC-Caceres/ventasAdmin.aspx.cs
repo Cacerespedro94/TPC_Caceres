@@ -29,7 +29,7 @@ namespace TPC_Caceres
                 DgvVenta.DataBind();
                 DgvVenta.RowStyle.CssClass = "font-weight-bold";
 
-                if (DgvVenta.DataSource != null)
+                if (negocio.ListarVentasAdministrador().Count> 0)
                 {
                     DgvVenta.HeaderRow.CssClass = "bg-primary";
                 }

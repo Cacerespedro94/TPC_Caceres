@@ -143,6 +143,43 @@ namespace Negocio
 
         }
 
+        public List<Articulo> ListarArticulosMasVendidos()
+        {
+            List<Articulo> listadoArticulo = new List<Articulo>();
+            Articulo aux;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearQuery("select * from vwListarRankingProductos");
+                datos.ejecutarLector();
+                while (datos.lector.Read())
+                {
+                    aux = new Articulo();
+
+                    aux.Id = datos.lector.GetInt32(0);
+                    aux.Nombre = datos.lector.GetString(1);
+                    aux.Precio = datos.lector.GetDecimal(2);
+                    aux.Descripcion = datos.lector.GetString(3);
+                    aux.CantidadUnidades = datos.lector.GetInt32(4);
+
+
+                    listadoArticulo.Add(aux);
+                }
+
+                return listadoArticulo;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
     }
 
 }
